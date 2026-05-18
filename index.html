@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fussballreise 2026 🗺️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f0f0f;
+      --surface: #181818;
+      --surface2: #222;
+      --border: #333;
+      --text: #e8e8e8;
+      --muted: #888;
+      --accent: #f5c518;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 60px 40px 40px;
+      border-bottom: 2px solid var(--accent);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header .label {
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 4px;
+      font-size: 13px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 8vw, 96px);
+      line-height: 0.95;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 16px;
+      max-width: 600px;
+    }
+
+    .region-tabs {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      padding: 0 40px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 10px 22px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover, .tab-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(245,197,24,0.05);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 0 80px;
+    }
+
+    .region-section > .clubs-grid,
+    .region-section > div[style*="margin-top: 48px"],
+    .region-section > .section-note {
+      margin-left: 40px;
+      margin-right: 40px;
+    }
+
+    .region-section > .clubs-grid {
+      margin-top: 40px;
+    }
+
+    .region-section {
+      display: none;
+    }
+    .region-section.active {
+      display: block;
+    }
+
+    .region-header {
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .region-header h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      letter-spacing: 1px;
+    }
+
+    .region-header .subtitle {
+      color: var(--muted);
+      font-size: 15px;
+      margin-top: 4px;
+    }
+
+    .clubs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .club-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+
+    .club-card:hover {
+      border-color: #555;
+    }
+
+    .club-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .club-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .club-name small {
+      display: block;
+      font-family: 'Barlow', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--muted);
+      margin-top: 2px;
+      letter-spacing: 0;
+    }
+
+    .liga-badge {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid;
+      white-space: nowrap;
+      margin-left: 12px;
+      flex-shrink: 0;
+    }
+
+    .liga-1    { border-color: #f5c518; color: #f5c518; }
+    .liga-2    { border-color: #aaa; color: #aaa; }
+    .liga-3    { border-color: #888; color: #888; }
+    .liga-seriea { border-color: #4a90d9; color: #4a90d9; }
+    .liga-serieb { border-color: #888; color: #888; }
+    .liga-pl    { border-color: #3d0066; color: #ae76f0; background: rgba(100,0,180,0.08); }
+    .liga-scottish { border-color: #1a6b35; color: #4cb872; }
+
+    .club-meta {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 14px;
+    }
+
+    .meta-item {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .meta-item span {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .club-desc {
+      font-size: 14px;
+      color: #bbb;
+      line-height: 1.6;
+    }
+
+    .club-desc strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .club-note {
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: rgba(245,197,24,0.06);
+      border-left: 2px solid var(--accent);
+      font-size: 13px;
+      color: #bbb;
+    }
+
+    .section-note {
+      margin-top: 36px;
+      padding: 20px 24px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .section-note h4 {
+      color: var(--text);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── HERO BANNER ── */
+    .region-hero {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      overflow: hidden;
+      margin-bottom: 36px;
+    }
+    .region-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      filter: brightness(0.45) saturate(0.8);
+      transition: filter 0.6s;
+      display: block;
+    }
+    .region-hero:hover img { filter: brightness(0.55) saturate(0.9); }
+    .region-hero-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px 40px;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
+    }
+    .region-hero-overlay h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 7vw, 88px);
+      line-height: 0.9;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+    .region-hero-overlay .subtitle {
+      color: rgba(255,255,255,0.65);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    /* ── CLUB CARD WITH IMAGE ── */
+    .club-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      margin: -24px -24px 18px -24px;
+      width: calc(100% + 48px);
+      filter: brightness(0.7) saturate(0.75);
+      transition: filter 0.4s;
+    }
+    .club-card:hover .club-img { filter: brightness(0.85) saturate(0.9); }
+
+    /* ── CITY CARD IMAGE ── */
+    .city-img {
+      width: calc(100% + 48px);
+      margin: -24px -24px 18px -24px;
+      height: 200px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: brightness(0.6) saturate(0.8);
+      transition: filter 0.4s;
+    }
+    .club-card:hover .city-img { filter: brightness(0.8) saturate(0.95); }
+
+    /* ── LOADING SKELETON ── */
+    .img-skeleton {
+      background: linear-gradient(90deg, #1a1a1a 25%, #252525 50%, #1a1a1a 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .club-fans {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: #999;
+      line-height: 1.6;
+    }
+    .club-fans strong {
+      color: #f5c518;
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-family: 'Barlow Condensed', sans-serif;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    @media (max-width: 600px) {
+      header, main, .region-tabs { padding-left: 20px; padding-right: 20px; }
+      .clubs-grid { grid-template-columns: 1fr; }
+      .region-hero { height: 220px; }
+      .region-hero-overlay { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="label">Jahresplanung · Herbst 2026</div>
+  <h1>Fussball&shy;reise<br>2026</h1>
+  <p>Drei Destinationen, alle Clubs von Liga 1 bis Liga 3 — Fakten gesammelt, noch keine Bewertung.</p>
+</header>
+
+<div class="region-tabs">
+  <button class="tab-btn active" onclick="showRegion('ruhrpott', this)">🟡 Ruhrpott</button>
+  <button class="tab-btn" onclick="showRegion('apulien', this)">🔴 Apulien</button>
+  <button class="tab-btn" onclick="showRegion('nordengland', this)">⚫ Nordengland</button>
+  <button class="tab-btn" onclick="showRegion('schottland', this)">🟢 Schottland</button>
+</div>
+
+<main>
+
+  <!-- RUHRPOTT -->
+  <section id="ruhrpott" class="region-section active">
+    <div class="region-hero">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Aerial_image_of_shaft_12_of_the_Zollverein_Coal_Mine_Industrial_Complex_in_Essen_%28view_from_the_east%29.jpg/1200px-Aerial_image_of_shaft_12_of_the_Zollverein_Coal_Mine_Industrial_Complex_in_Essen_%28view_from_the_east%29.jpg" alt="Zeche Zollverein Ruhrgebiet" loading="lazy">
+      <div class="region-hero-overlay">
+        <h2>Ruhrpott</h2>
+        <div class="subtitle">Dortmund · Gelsenkirchen · Bochum · Duisburg · Essen — Fussball-Dichte wie nirgendwo sonst in Europa</div>
+      </div>
+    </div>
+    <div class="clubs-grid">
+
+      <div class="club-card">
+        <div class="club-top">
+          <div class="club-name">Borussia Dortmund<small>BVB · Gegründet 1909</small></div>
+          <div class="liga-badge liga-1">Bundesliga</div>
+        </div>
+        <div class="club-meta">
+          <div class="meta-item">Stadion <span>Signal Iduna Park</span></div>
+          <div class="meta-item">Kapazität <span>81'365</span></div>
+        </div>
+        <div class="club-desc">
+          Eines der grössten Stadien Europas. Die <strong>Südtribüne</strong> (Stehplatz, 25'000) gilt als lauteste Kurve im Vereinsfussball überhaupt. BVB spielt 2026/27 in Bundesliga und erneut wohl in der Champions League.
+        </div>
+        <div class="club-fans">
+          <strong>Fankultur</strong>
+          Die «Gelbe Wand» (Die Gelbe Wand) ist mit 24'454 Stehplätzen die grösste Stehplatztribüne Europas — steiler als ein Skisprunganlauf, laut genug dass selbst Bastian Schweinsteiger sagte: «Die Gelbe Wand ist das Einzige, vor dem ich Angst hatte.» Jürgen Klopp beschrieb das Betreten des Stadions als «wiedergeboren werden». Stehplatz-Saisonkarte kostet 219 Euro — Warteliste: 5 Jahre. Der Club hat die höchste Zuschauerzahl Europas im Schnitt.
+        </div>
+        <div class="club-note">Tickets für Stehplätze sind begehrt, aber für Besucher via Tageskasse oder Resale verfügbar.</div>
+      </div>
+
+      <div class="club-card">
+        <div class="club-top">
+          <div class="club-name">FC Schalke 04<small>S04 · Gegründet 1904</small></div>
+          <div class="liga-badge liga-1">Bundesliga</div>
+        </div>
+        <div class="club-meta">
+          <div class="meta-item">Stadion <span>Veltins-Arena</span></div>
+          <div class="meta-item">Kapazität <span>62'271</span></div>
+        </div>
+        <div class="club-desc">
+          Nach 3 Jahren Zweitklassigkeit ist Schalke zurück in der Bundesliga — als <strong>Zweitligameister 2025/26</strong>, mit 20.000 Fans beim Aufstiegs-Fanmarsch. Erste Saison zurück im Oberhaus, entsprechend aufgeladen.
+        </div>
+        <div class="club-fans">
+          <strong>Fankultur</strong>
+          Schalke ist kein Verein — es ist eine Lebenseinstellung. Die Identität wurzelt in der Bergarbeitergeschichte: Der Club wurde buchstäblich von Minenarbeitern und deren Familien aus dem Arbeiterviertel Schalke gegründet. Die <em>Nordkurve</em> ist die Heimat der Ultras — 90 Minuten non-stop, Megaphone, Choreografien. Vereinshymne «Blau und Weiss, wie lieb ich dich» wird vor jedem Spiel gesungen, mit Schal in die Luft. 2025/26 gab es bei der Aufstiegsfeier einen Fanmarsch mit 20'000 Menschen durch Gelsenkirchen.
+        </div>
+        <div class="club-note">Revierderby BVB vs. Schalke ist zurück in Liga 1 — eines der grössten Derbys Deutschlands.</div>
+      </div>
+
+      <div class="club-card">
+        <div class="club-top">
+          <div class="club-name">VfL Bochum<small>Gegründet 1848</small></div>
+          <div class="liga-badge liga-2">2. Bundesliga</div>
+        </div>
+        <div class="club-meta">
+          <div class="meta-item">Stadion <span>Vonovia Ruhrstadion</span></div>
+          <div class="meta-item">Kapazität <span>27'599</span></div>
+        </div>
+        <div class="club-desc">
+          Traditionsclub mit grosser Fangemeinde, nach Bundesliga-Abstieg nun in der 2. Liga. Kompaktes Stadion, sehr enge Atmosphäre, günstige Tickets.
+        </div>
+        <div class="club-fans">
+          <strong>Fankultur</strong>
+          Bochum-Fans sind loyal bis zur Selbstaufopferung — auch in schlechten Jahren. Herbert Grönemeyers Song «Bochum» (1984) ist Vereinshymne und Identitätsstifter. Wenn beim Einlaufen «Bochum, ich komm aus dir» gespielt wird, singen 27'000 mit. Das Vonovia Ruhrstadion, direkt an der Castroper Strasse, ist kompakt, laut und hat kein Plastik-Megastadion-Gefühl — es riecht nach echtem Fussball.
+        </div>
+      </div>
+
+      <div class="club-card">
+        <div class="club-top">
+          <div class="club-name">MSV Duisburg<small>Zebras · Gegründet 1902</small></div>
+          <div class="liga-badge liga-3">3. Liga</div>
+        </div>
+        <div class="club-meta">
+          <div class="meta-item">Stadion <span>Schauinsland-Reisen Arena</span></div>
+          <div class="meta-item">Kapazität <span>31'500</span></div>
+        </div>
+        <div class="club-desc">
+          Ehemaliger Bundesligist und Europapokal-Teilnehmer, heute in der 3. Liga. Derby gegen RW Essen ist hochemotional. In der Saison 2025/26 verpasste Duisburg den Aufstieg am letzten Spieltag dramatisch — Relegationsplatz ging in der Nachspielzeit verloren.
+        </div>
+        <div class="club-fans">
+          <strong>Fankultur</strong>
+          MSV-Fans gehören zu den treuesten im deutschen Fussball — trotz Jahrzehnten des Niedergangs. Die Fangemeinde ist eng mit der Hafenarbeiter- und Stahlidentität der Stadt verbunden. Das Derby gegen RW Essen («Revierderby der kleinen Leute») ist eins der giftigsten in der 3. Liga. Viele MSV-Fans lehnen moderne Kommerzialisierung ab — der Club gilt als «echter» Arbeiterverein.
+        </div>
+      </div>
+
+      <div class="club-card">
+        <div class="club-top">
+          <div class="club-name">Rot-Weiss Essen<small>RWE · Gegründet 1907</small></div>
+          <div class="liga-badge liga-3">3. Liga / Relegation</div>
+        </div>
+        <div class="club-meta">
+          <div class="meta-item">Stadion <span>Stadion Hafenstraße</span></div>
+          <div class="meta-item">Kapazität <span>19'300</span></div>
+        </div>
+        <div class="club-desc">
+          Legendärer Traditionsclub (DFB-Pokalsieger, Europapokal), seit Jahrzehnten in unteren Ligen. 2025/26 Dritter der 3. Liga, kämpft in der Relegation gegen Greuther Fürth um den Aufstieg in die 2. Liga. Ergebnis noch offen (Stand 18. Mai 2026).
+        </div>
+        <div class="club-fans">
+          <strong>Fankultur</strong>
+          RWE-Fans sind bekannt für besonders leidenschaftlichen Support trotz — oder gerade wegen — jahrelanger Niederlagen. Der Aufstieg in die 2. Liga wäre für viele Fans die Erfüllung eines jahrzehntelangen Traums. Das Stadion Hafenstraße ist eines der stimmungsvollsten der unteren Ligen — eng, laut, kein Konsumtempel.
+        </div>
+        <div class="club-note">⚡ Relegation Hin- & Rückspiel 22./26. Mai 2026 — Liga für 2026/27 noch unklar.</div>
+      </div>
+
+    </div>
+
+    <!-- RUHRPOTT STÄDTE -->
+    <div style="margin-top: 48px;">
+      <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 1px; margin-bottom: 24px; color: var(--accent);">Die Städte</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;">
+
+        <div class="club-card">
+          <div class="club-name" style="font-size: 20px; margin-bottom: 12px;">⚙️ Dortmund<small>580'000 Einwohner · Westfalenmetropole</small></div>
+          <div class="club-desc">
+            Dortmund ist die grösste Stadt des Ruhrpotts und die, die sich am stärksten neu erfunden hat. Früher Kohle und Stahl, heute Logistik, Technologie — und natürlich BVB. Aber wer nur ans Stadion denkt, verpasst eine echte Stadt mit Charakter.
+            <br><br>
+            <strong>Was Touristen sehen:</strong> Signal Iduna Park, Deutsches Fussballmuseum (direkt am Hauptbahnhof), Westfalenpark mit dem Fernsehturm «Florian».
+            <br><br>
+            <strong>Was Locals wissen:</strong> Das <em>Kreuzviertel</em> und <em>Kaiserviertel</em> sind die Szeneviertel — unaufgeregte Bars, unabhängige Läden, kein Touristenzirkus. Der <em>Bergmann Kiosk</em> ist Kult: hier trifft sich die ganze Stadt, Studenten neben Rentnern, für ein Feierabendbier in entspannter Atmosphäre. Die <em>Kokerei Hansa</em> ist eine alte Koksproduktionsstätte, heute Industriedenkmal und Kulturort — weniger bekannt als Zollverein, aber atmosphärisch.
+            <br><br>
+            <strong>Essen:</strong> Currywurst (im Pott, nicht in Berlin, erfunden). Dortmunder Bier — DAB und Brinkhoff's No. 1 sind lokal. Starke türkische und arabische Küche im Nordviertel. Im <em>Westpark</em> kann man mit Essen vom Markt picknicken.
+            <br><br>
+            <strong>Geheimtipp:</strong> Der <em>Phoenix See</em> im Stadtteil Hörde — ein künstlicher See auf dem Gelände einer alten Stahlhütte. Heute Naherholungsgebiet mit Cafés und Restaurants, kaum bekannt ausserhalb der Stadt.
+          </div>
+        </div>
+
+        <div class="club-card">
+          <div class="club-name" style="font-size: 20px; margin-bottom: 12px;">👑 Gelsenkirchen<small>260'000 Einwohner · Königsblau</small></div>
+          <div class="club-desc">
+            Gelsenkirchen ist eine der härtesten Arbeiterstädte des Ruhrgebiets — und stolz darauf. Lange Jahrzehnte geprägt von Kohle, Glas und Schalke 04. Heute ist die Stadt wirtschaftlich unter Druck, aber die Identität ist stärker als je zuvor: <strong>hier ist Schalke kein Verein, sondern eine Lebenseinstellung.</strong>
+            <br><br>
+            <strong>Was Touristen sehen:</strong> Veltins-Arena, Zoom Erlebniswelt (grosser Tierpark).
+            <br><br>
+            <strong>Was Locals wissen:</strong> Die <em>Halde Rungenberg</em> mit der Lichtinstallation «Himmel über Gelsenkirchen» — zwei Gipfel mit Feuerschalen, die nachts leuchten, fast nie Touristen, grossartiger Blick über das Revier. Die <em>Zeche Consol</em> ist ein ehemaliges Bergwerk, heute Kulturzentrum mit Veranstaltungen und einem der urigsten Biergärten des Reviers.
+            <br><br>
+            <strong>Essen:</strong> Deftig und ehrlich. Döner-Dichte gehört zu den höchsten in Deutschland. Das Revier-typische <em>Schmalzbrötchen</em> kriegt man in alten Bäckereien für Cents. Steakhouses mit grosszügigen Portionen.
+            <br><br>
+            <strong>Geheimtipp:</strong> Nach dem Schalke-Spiel mit den Fans auf die Trinkhallen («Büdchen»). Das ist echter Ruhrpott-Moment — stehend, draussen, Bier in der Hand, Vorspiel oder Nachspiel zur Partie.
+          </div>
+        </div>
+
+        <div class="club-card">
+          <div class="club-name" style="font-size: 20px; margin-bottom: 12px;">🎸 Bochum<small>365'000 Einwohner · Grönemeyers Stadt</small></div>
+          <div class="club-desc">
+            Bochum ist die sympathischste Stadt im Ruhrpott — kleiner, entspannter, studentisch geprägt durch die Ruhr-Universität. International bekannt durch Herbert Grönemeyers Lied «Bochum» (1984), das in der Kurve des VfL gesungen wird. Keine Grossstadt-Attitüde, aber viel Herzlichkeit.
+            <br><br>
+            <strong>Was Touristen sehen:</strong> Deutsches Bergbau-Museum (das weltgrösste Bergbaumuseum, mit einem 2,5 km langen Stollen unter der Erde), Jahrhunderthalle.
+            <br><br>
+            <strong>Was Locals wissen:</strong> Das <em>Ehrenfeld-Viertel</em> (lokal: «Kleine Tocke») ist das Szene-Herz — unabhängige Cafés, türkisches Streetfood, bodenständig. Die <em>Erzbahntrasse</em> ist ein alter Gütereisenbahnweg, umgebaut zum Rad- und Fussweg, der Bochum mit Gelsenkirchen verbindet — vorbei an Zechen, Halden und Industrieruinen. Auf halbem Weg: <em>Holgers Erzbahnbude</em>, ein Kiosk mit Kult-Status.
+            <br><br>
+            <strong>Essen:</strong> Fiege-Bier ist Bochum — Privatbrauerei seit 1736. Das Bermuda3Eck ist das Ausgehviertel mit Bars und Restaurants rund um die Viktoriastrasse. Neapolitanische Pizza bei <em>Pizza</em> im Ehrenfeld hat Kultstatus unter Einheimischen.
+            <br><br>
+            <strong>Geheimtipp:</strong> Abends auf der Halde Schwerin in Castrop-Rauxel — mit einer 24-Säulen-Sonnenuhr auf dem Gipfel, Sonnenuntergang über dem Revier, kaum bekannt.
+          </div>
+        </div>
+
+        <div class="club-card">
+          <div class="club-name" style="font-size: 20px; margin-bottom: 12px;">⚓ Duisburg<small>500'000 Einwohner · Innenhafen & Zebras</small></div>
+          <div class="club-desc">
+            Duisburg hat den grössten Binnenhafen der Welt und eines der spannendsten Industriekultur-Projekte Europas. Die Stadt kämpft mit Strukturproblemen, aber der <em>Landschaftspark Duisburg-Nord</em> ist ein Werk-Wahrzeichen: ein altes Thyssen-Hüttenwerk aus dem Jahr 1901, das einfach stehengelassen und zu einem Park umgebaut wurde. Hochöfen, Gichtgasrohre, Kühltürme — heute alles öffentlich zugänglich, teils beleuchtet.
+            <br><br>
+            <strong>Was Touristen sehen:</strong> Landschaftspark Duisburg-Nord, Innenhafen mit Museen.
+            <br><br>
+            <strong>Was Locals wissen:</strong> Im Landschaftspark kann man auf den Hochöfen herumklettern, im alten Gasometer tauchen, den Kletterpark nutzen — alles kostenlos oder günstig. Abends leuchtet die Anlage in bunten Farben. Der <em>Innenhafen</em> ist ein umgebautes Hafengelände mit Restaurants, Galerien und einem Museumsschiff — deutlich entspannter als die üblichen Stadtlagen.
+            <br><br>
+            <strong>Essen:</strong> Grosse türkische Gemeinschaft — einer der höchsten Anteile in NRW. Exzellente türkische Bäckereien, Kebab-Läden und Teehäuser. MSV-Fans treffen sich in Kneipen rund ums Stadion.
+            <br><br>
+            <strong>Geheimtipp:</strong> Nächtlicher Besuch des Landschaftsparks wenn die Lichtinstallation läuft — ein Erlebnis, das keiner erwartet und alle in Erinnerung behalten.
+          </div>
+        </div>
+
+        <div class="club-card">
+          <div class="club-name" style="font-size: 20px; margin-bottom: 12px;">🏭 Essen<small>590'000 Einwohner · Zeche Zollverein</small></div>
+          <div class="club-desc">
+            Essen ist die nominelle «Hauptstadt» des Ruhrgebiets und beherbergt das Highlight der ganzen Region: die <strong>Zeche Zollverein</strong>, UNESCO-Weltkulturerbe seit 2001. Früher grösste Steinkohlzeche der Welt, heute Kulturgelände. Aber Essen hat mehr als das.
+            <br><br>
+            <strong>Was Touristen sehen:</strong> Zeche Zollverein mit Ruhr Museum, Red Dot Design Museum, Kokerei.
+            <br><br>
+            <strong>Was Locals wissen:</strong> <em>Zollverein</em> ist kostenlos zu betreten und zu erkunden — nur Museen kosten Eintritt. Im Sommer gibt es Openair-Kino und Konzerte, im Winter Eislaufen direkt auf der Kokerei. Die <em>Villa Hügel</em> ist das frühere Wohnhaus der Krupp-Industriellenfamilie — riesig, teils der Öffentlichkeit zugänglich, ein Fenster in die Machtstrukturen des 19. Jahrhunderts. Der <em>Baldeneysee</em> ist ein Trinkwassersee mitten in der Stadt, beliebt zum Radeln, Rudern, Grillen.
+            <br><br>
+            <strong>Essen &amp; Trinken:</strong> Das Restaurant <em>The Mine</em> auf dem Zollverein-Gelände in einem Maschinenhaus — ungewöhnliches Ambiente. Rüttenscheider Strasse («Rü») ist das Ausgehviertel mit Gastro-Konzentration.
+            <br><br>
+            <strong>Geheimtipp:</strong> Der Radweg auf der alten <em>Nordsternbahn-Trasse</em> zwischen Essen und Gelsenkirchen verbindet Zollverein mit dem Nordsternpark — eine der schönsten Industrielandschaften, die man zu Fuss oder per Rad erleben kann.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section-note" style="margin-top: 24px;">
+      <h4>Ruhrpott · Die grosse Klammer</h4>
+      Fünf Städte, fünf Clubs, alles innerhalb von 40 km — mit S-Bahn und U-Bahn zwischen allen verbunden, kein Auto nötig. Die <em>Route der Industriekultur</em> verbindet 27 historische Standorte durch die ganze Region. Currywurst im Pott, Döner weltweit beste Dichte, echte Arbeiterkneipe — günstig, direkt, ohne Touristenaufschlag.
+    </div>
+  </section>
+
+  <!-- APULIEN -->
+  <section id="apulien" class="region-section">
+    <div class="region-hero">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Lecce_-_Basilica_di_Santa_Croce_01.jpg/1200px-Lecce_-_Basilica_di_Santa_Croce_01.jpg" alt="Lecce Basilica di Santa Croce" loading="lazy">
+      <div class="region-hero-overlay">
+        <h2>Apulien</h2>
+        <div class="subtitle">Lecce · Bari · Foggia — Der Fersenballen Italiens. Serie A, Serie B, Serie D — und eine der besten Küchen Europas.</div>
+      </div>
+    </div>
+    <div class="clubs-grid">
+
+      <div class="club-card">
+        <div class="club-top">
+          <div class="club-name">US Lecce<small>Giallorossi · Gegründet 1908</small></div>
+          <div class="liga-badge liga-seriea">Serie A</div>
+        </div>
+        <div class="club-meta">
+          <div class="meta-item">Stadion <span>Stadio Via del Mare</span></div>
+          <div class="meta-item">Kapazität <span>31'533</span></div>
+        </div>
+        <div class="club-desc">
+          Vierte Saison in Folge in der Serie A (2025/26). Kleiner Club aus dem Süden, der sich jedes Jahr gegen den Abstieg stemmt — entsprechend kämpferisch und leidenschaftlich. Das Stadion liegt direkt am Stadtrand von Lecce, einer der schönsten Barockstädte Italiens.
+        </div>
+        <div class="club-fans">
+          <strong>Fankultur</strong>
+          Die Ultras Lecce (gegründet 1996) besitzen die Curva Nord. Was sie einzigartig macht: ihre Gesänge sind teilweise im lokalen <em>Dialetto salentino</em> — kein anderes Stadion in Italien klingt so. Die Kurve soll sogar den Ursprung des berühmten «Chi non salta è…»-Chors haben, der heute in allen Stadien Europas gesungen wird. Das Verhältnis zur Vereinsführung ist traditionell schwierig — die Ultras kommunizieren klassisch über Wandschmierereien in der Stadt statt über Social Media. Erzrivalität: Derby di Puglia gegen Bari.
+        </div>
+        <div class="club-note">Ligastatus 2026/27 hängt vom Saisonfinale ab (noch 1 Spieltag ausstehend, Stand 18. Mai 2026).</div>
+      </div>
+
+      <div class="club-card">
+        <div class="club-top">
+          <div class="club-name">SSC Bari<small>Galletti · Gegründet 1908</small></div>
+          <div class="liga-badge liga-serieb">Serie B</div>
+        </div>
+        <div class="club-meta">
+          <div class="meta-item">Stadion <span>Stadio San Nicola</span></div>
+          <div class="meta-item">Kapazität <span>58'270</span></div>
+        </div>
+        <div class="club-desc">
+          Traditionsclub aus der apulischen Hauptstadt, aktuell in der Serie B. Das <strong>San Nicola</strong> wurde für die WM 1990 gebaut — ikonische Architektur, riesige Schüssel. Bari ist historisch der erfolgreichste apulische Club (18 Serie-A-Saisons). Derby gegen Lecce heisst «Derby di Puglia».
+        </div>
+        <div class="club-fans">
+          <strong>Fankultur</strong>
+          Bari-Fans sind leidenschaftlich und stolz auf ihre Hafenstadt-Identität. Das San Nicola (58'000 Plätze) ist für die Serie B massiv überdimensioniert — was die Atmosphäre fast surreal macht, wenn nur 15'000 Fans drin sind. Die Ultragruppen pflegen scharfe Rivalität mit Lecce («baresie» vs. «leccesi») — das Derby di Puglia ist über Generationen gewachsener Hass. Bari hat eine Verbindung zu Napoli-Fankultur: laut, emotional, unberechenbar.
+        </div>
+        <div class="club-note">Lecce–Bari: nur 90 km voneinander entfernt — beide Spiele in einem Trip kombinierbar.</div>
+      </div>
+
+      <div class="club-card">
+        <div class="club-top">
+          <div class="club-name">Calcio Foggia 1920<small>Satanelli · Gegründet 1920</small></div>
+          <div class="liga-badge liga-3">Serie D</div>
+        </div>
+        <div class="club-meta">
+          <div class="meta-item">Stadion <span>Stadio Pino Zaccheria</span></div>
+          <div class="meta-item">Kapazität <span>18'000</span></div>
+        </div>
+        <div class="club-desc">
+          Traditionsclub aus Nordapulien mit einer der leidenschaftlichsten Fangemeinden der Region. Die Saison 2025/26 war eine Katastrophe — Foggia beendete die Serie C als 18. und stieg in die Serie D (4. Liga) ab. Der Verein gilt als «Schlafender Riese»: Foggia war in den 90ern unter Zdeněk Zeman mit attraktivem Offensivfussball bekannt und spielte in der Serie A.
+        </div>
+        <div class="club-fans">
+          <strong>Fankultur</strong>
+          Foggia-Fans sind bekannt dafür, ihren Club auch in der Tiefe der Ligen nicht aufzugeben — ein Phänomen, das in Süditalien fast schon religiöse Züge annimmt. Die Kurve nennt sich «Satanelli» (kleine Teufel) nach dem Spitznamen des Clubs. Trainer Zdeněk Zeman wurde in Foggia zur Legende — sein Offensivfussball in den 90ern (Signori, Rambaudi) wird bis heute verehrt. Ein Spielbesuch in der Serie D ist ein Erlebnis ohne jede kommerzielle Glättung: roher, echter Calcio.
+        </div>
+        <div class="club-note">⚠️ Serie D 2026/27. Wer echten Süditalienischen Fussball ohne Touristenkulisse erleben will: hier.</div>
+      </div>
+
+    </div>
+
+    <!-- STÄDTE -->
+    <div style="margin-top: 48px;">
+      <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 1px; margin-bottom: 24px; color: var(--accent);">Die Städte</h3>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;">
+
+        <div class="club-card">
+          <div class="club-name" style="font-size: 20px; margin-bottom: 12px;">🏛️ Lecce<small>«Florenz des Südens» · 95'000 Einwohner</small></div>
+          <div class="club-desc">
+            Lecce ist eine Universitätsstadt — klein genug für entspannte Fussgänger-Erkundungen, gross genug für ein richtiges Abendleben. Das gesamte Zentrum ist aus dem <strong>lokalen goldgelben Kalkstein</strong> (Pietra Leccese) gebaut — weich genug zum Schnitzen, deshalb der exzessive Barockschmuck an jeder Fassade. Bei Sonnenuntergang leuchtet die ganze Altstadt orange.
+            <br><br>
+            <strong>Was Touristen sehen:</strong> Basilica di Santa Croce, Piazza del Duomo, Römisches Amphitheater (mitten im Stadtzentrum vergraben, erst nach dem WK II ausgegraben).
+            <br><br>
+            <strong>Was Locals wissen:</strong> Der <em>Convitto Palmieri</em> — eine riesige, säulengefasste Piazza, die in keinem Reiseführer steht, weil das Gebäude eine Bibliothek ist. Abends treffen sich hier Studenten. Der Weg entlang der Stadtmauer nach Sonnenuntergang ist menschenleer und fotografisch grandios. Das Viertel rund um <em>Porta Napoli</em> ist das echte Studentenviertel — hier essen die Einheimischen, nicht die Touristen.
+            <br><br>
+            <strong>Essen:</strong> Pasticciotto warm aus dem Ofen zum Frühstück. Rustico Leccese (Blätterteig mit Béchamel und Tomate) als Snack — überall erhältlich, für wenige Cents. Caffè Leccese: Espresso über Eis mit Mandelsirup — das einzige Eis-Kaffee-Konzept, das in Italien akzeptiert wird. Abends Aperitivo in den Seitengassen rund um Santa Croce.
+            <br><br>
+            <strong>Geheimtipp:</strong> Das <em>Teatro Paisiello</em> — ein winziges historisches Theater mit pistaziengrünen Wänden und kirschrotem Samt, praktisch unbekannt bei Besuchern.
+          </div>
+        </div>
+
+        <div class="club-card">
+          <div class="club-name" style="font-size: 20px; margin-bottom: 12px;">🐙 Bari<small>Hauptstadt Apuliens · 320'000 Einwohner</small></div>
+          <div class="club-desc">
+            Bari ist die grosse, raue, echte Stadt — keine Postkarten-Kulisse, sondern lebendige apulische Grossstadt mit Häfen, Märkten und einem Altstadtlabyrinth, in dem sich auch Einheimische noch verirren. <strong>Bari Vecchia</strong> ist ein Gewirr weisser Gässchen, in denen die Frauen auf der Strasse Orecchiette formen — das ist kein Folklore-Act für Touristen, das passiert morgens täglich, seit Generationen.
+            <br><br>
+            <strong>Was Touristen sehen:</strong> Basilica di San Nicola (eine der bedeutendsten romanischen Kirchen Süditaliens), Castello Svevo, Lungomare.
+            <br><br>
+            <strong>Was Locals wissen:</strong> Der <em>Fischmarkt am Molo San Nicola</em> morgens um 7 Uhr — Fischer verkaufen direkt vom Boot, rohe Meeresfrüchte werden an Ort und Stelle gegessen. Geheimtipp: <em>Panino col polpo</em> — gegrillter Oktopus im Weissbrot, zwei Zutaten, keine Sauce, absolut unschlagbar. Nur ein blauer Kiosk am Molo, kein Name, immer Schlange. In Bari Vecchia laufen Touristen und Einheimische durch dieselben Gässchen, aber der Unterschied ist: wer weiss, wo die Nonnas sitzen, wartet, bis frische Orecchiette fertig sind.
+            <br><br>
+            <strong>Essen:</strong> Focaccia Barese (Kartoffelteig, Kirschtomaten, Oliven, viel Öl) — eine Religion. Tiella di riso, patate e cozze: der eine Topf, der Bari definiert. Crudo di mare: rohe Muscheln, Seeigel, Garnelen direkt vom Markt. Abends Fisch in Bari Vecchia, aber unbedingt in einer Trattoria ohne englische Speisekarte.
+            <br><br>
+            <strong>Geheimtipp:</strong> <em>Strada dell'Arco Basso</em> — die Strasse, auf der die Nonnas Orecchiette fertigen. Am besten unter der Woche, morgens.
+          </div>
+        </div>
+
+        <div class="club-card">
+          <div class="club-name" style="font-size: 20px; margin-bottom: 12px;">🌾 Foggia<small>Hauptstadt der Capitanata · 150'000 Einwohner</small></div>
+          <div class="club-desc">
+            Foggia ist die <strong>am wenigsten touristische</strong> Grossstadt Apuliens — und das ist kein Fehler, sondern ein Merkmal. Die Stadt liegt im Herz des <em>Tavoliere delle Puglie</em>, der zweitgrössten Ebene Italiens, umgeben von Weizenfeldern, die bis zum Horizont reichen. Foggia nennt man das «Granaio d'Italia». Die Stadt selbst hat keine spektakuläre Silhouette — sie wurde 1731 durch ein Erdbeben und 1943 durch alliierte Bombardierungen weitgehend zerstört. Was geblieben ist, ist eine bodenständige, warme, ungefilterte Stadt.
+            <br><br>
+            <strong>Geschichte:</strong> Kaiser Friedrich II liebte Foggia so sehr, dass er 1223 seinen Kaiserpalast hier baute und es zur imperialen Residenz erklärte. Ein Stein mit der Inschrift dieser Proklamation ist noch heute im Stadtbild zu sehen.
+            <br><br>
+            <strong>Was Touristen sehen:</strong> Kaum etwas — das ist der Punkt. Dom, Museo Civico, Piazza Cavour.
+            <br><br>
+            <strong>Was Locals wissen:</strong> Die <em>Ipogei</em> — ein unterirdisches Netz aus mittelalterlichen Katakomben und Getreidesilos unter dem Stadtzentrum, nur auf Voranmeldung zugänglich, praktisch unbekannt. Gargano-Ausflug: In 45 Minuten ist man am Promontorio del Gargano — wilde Küste, Olivenwälder, Bergdörfer wie <em>Monte Sant'Angelo</em> (UNESCO) und das menschenleere Fischer-Nest <em>Rodi Garganico</em>.
+            <br><br>
+            <strong>Essen:</strong> Pasta di Grano Arso — die lokale Spezialität schlechthin. Früher aassen die Armen den Weizen, der nach der Feldbrennung auf der Erde liegen blieb — angesengt, rauchig. Heute ist es ein Gourmet-Produkt mit tiefem, gerösteten Aroma. Dazu Troccoli (lokale dicke Spaghetti), Agnello al forno (Lamm aus den Murge-Bergen), Primitivo di Manduria.
+            <br><br>
+            <strong>Geheimtipp:</strong> Foggia ist der ideale Ausgangspunkt für den <em>Subappennino Dauno</em> — mittelalterliche Bergdörfer wie Bovino, Troia und Alberona, die praktisch niemand kennt.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section-note" style="margin-top: 24px;">
+      <h4>Apulien · Die grosse Klammer</h4>
+      Alle drei Städte liegen innerhalb von 180 km. Eine Reise Lecce–Bari–Foggia wäre ein kompletter Querschnitt durch Apulien: Barock-Universitätsstadt, lebendige Hafenmetropole, ungefilterte Ebenenstadt. Küche der «cucina povera» überall — einfache Zutaten, kein Marketing, maximaler Geschmack. Primitivo, Negroamaro, Nero di Troia: die apulischen Weine sind ausserhalb Italiens kaum bekannt und kosten vor Ort einen Bruchteil.
+    </div>
+  </section>
+
+  <!-- NORDENGLAND -->
+  <section id="nordengland" class="region-section">
+    <div class="region-hero">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Tyne_Bridge%2C_Newcastle_upon_Tyne_%28cropped%29.jpg/1200px-Tyne_Bridge%2C_Newcastle_upon_Tyne_%28cropped%29.jpg" alt="Tyne Bridge Newcastle" loading="lazy">
+      <div class="region-hero-overlay">
+        <h2>Nordengland</h2>
+        <div class="subtitle">Newcastle · Sunderland — Tyne-Wear-Derby, Premier League, Industriekultur</div>
+      </div>
+    </div>
+    <div class="clubs-grid">
+
+      <div class="club-card">
+        <div class="club-top">
+          <div class="club-name">Newcastle United<small>Magpies · Gegründet 1892</small></div>
+          <div class="liga-badge liga-pl">Premier League</div>
+        </div>
+        <div class="club-meta">
+          <div class="meta-item">Stadion <span>St. James' Park</span></div>
+          <div class="meta-item">Kapazität <span>52'258</span></div>
+        </div>
+        <div class="club-desc">
+          Mitten in der Stadt, umgeben von Häusern — St. James' Park ist eines der beeindruckendsten Stadionerlebnisse Englands. Seit der Saudi-Übernahme (2021) enorm investiert. Saison 2025/26: Platz 11 in der Premier League. Grosse, leidenschaftliche Fangemeinde.
+        </div>
+        <div class="club-fans">
+          <strong>Fankultur</strong>
+          Die «Geordies» — Bewohner Tyneside — definieren sich stark über Newcastle United. <em>«Toon Army»</em> nennt sich die Fangemeinde. Vor dem Spiel trinken sie Newcastle Brown Ale in Pubs, die um das Stadion herum überlaufen. Tradition: «Blaydon Races» wird vor Anpfiff gesungen. Die Fan-Initiative «Wor Flags» organisiert Flaggendisplays, die ganze Tribünen bedecken. Berühmte Fans: Sting, Sam Fender, Ant & Dec, Tony Blair.
+        </div>
+      </div>
+
+      <div class="club-card">
+        <div class="club-top">
+          <div class="club-name">AFC Sunderland<small>Black Cats · Gegründet 1879</small></div>
+          <div class="liga-badge liga-pl">Premier League</div>
+        </div>
+        <div class="club-meta">
+          <div class="meta-item">Stadion <span>Stadium of Light</span></div>
+          <div class="meta-item">Kapazität <span>49'000</span></div>
+        </div>
+        <div class="club-desc">
+          Nach Jahren in der Championship zurück in der Premier League. Saison 2025/26: Platz 9 — überraschend stark. Die Doku «Sunderland 'Til I Die» hat den Club international bekannt gemacht. Tyne-Wear-Derby gegen Newcastle ist eines der giftigsten Derbys Englands.
+        </div>
+        <div class="club-fans">
+          <strong>Fankultur</strong>
+          «Mackems» nennen sich die Sunderland-Fans — eine Bezeichnung, über deren Ursprung sie selbst streiten. Die Netflix-Doku «Sunderland 'Til I Die» zeigt authentisch, was es bedeutet, einen Club durch Abstieg und Wiederaufbau zu begleiten. Das Tyne-Wear-Derby gegen Newcastle (25 km Abstand, Welten Unterschied) ist für beide Fangruppen das wichtigste Spiel des Jahres — emotionaler als Europapokal-Spiele. Sunderland-Fans sind nach Jahren des Leidens jetzt wieder euphorisch — Premier League nach 10 Jahren Abwesenheit.
+        </div>
+        <div class="club-note">Newcastle–Sunderland: 25 km voneinander. Beide Stadien an einem Wochenende machbar.</div>
+      </div>
+
+      <div class="club-card">
+        <div class="club-top">
+          <div class="club-name">Middlesbrough FC<small>Boro · Gegründet 1876</small></div>
+          <div class="liga-badge liga-2">Championship</div>
+        </div>
+        <div class="club-meta">
+          <div class="meta-item">Stadion <span>Riverside Stadium</span></div>
+          <div class="meta-item">Kapazität <span>34'742</span></div>
+        </div>
+        <div class="club-desc">
+          Traditionsclub aus der Region Teesside, aktuell in der Championship (2. Liga England). Nur 40 km von Sunderland entfernt. Treue Fangemeinde, gute Atmosphäre.
+        </div>
+      </div>
+
+      <div class="club-card">
+        <div class="club-top">
+          <div class="club-name">Hartlepool United<small>Pools · Gegründet 1908</small></div>
+          <div class="liga-badge liga-3">National League</div>
+        </div>
+        <div class="club-meta">
+          <div class="meta-item">Stadion <span>Suit Direct Stadium</span></div>
+          <div class="meta-item">Kapazität <span>7'691</span></div>
+        </div>
+        <div class="club-desc">
+          Kleiner Club, grosse Geschichte. Aktuell in der National League (5. Liga England). Bekannt aus der Fussball-Folklore — und für günstige Tickets und direkte Fan-Nähe. Nur 30 km von Sunderland.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- NORDENGLAND STÄDTE -->
+    <div style="margin-top: 48px;">
+      <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 1px; margin-bottom: 24px; color: var(--accent);">Die Städte</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;">
+
+        <div class="club-card">
+          <div class="club-name" style="font-size: 20px; margin-bottom: 12px;">⚫⚪ Newcastle upon Tyne<small>300'000 Einwohner · Geordie Nation</small></div>
+          <div class="club-desc">
+            Newcastle ist eine Stadt, die sich selbst nicht zu ernst nimmt — und gerade deshalb unglaublich sympathisch ist. Die «Geordies» (Einheimische) sind für Offenheit, Direktheit und rabenschwarzen Humor bekannt. Die Stadt ist kompakt, zu Fuss gut erkundbar, und bietet mehr als der Fussball vermuten lässt.
+            <br><br>
+            <strong>Was Touristen sehen:</strong> St. James' Park (dominant auf dem Hügel über der Stadt), Tyne Bridge, Quayside mit Millennium Bridge.
+            <br><br>
+            <strong>Was Locals wissen:</strong> Der <em>Grainger Market</em> (1835) ist Newcastles Herz — überdachter viktorianischer Markt mit Ständen aus aller Welt, frischem Fisch, lokalen Käsern, dem ältesten Marks & Spencer-Stand Englands. Wer sich verläuft: das gehört dazu. Die <em>Grey Street</em> gilt als eine der schönsten Strassen Englands — georgianische Architektur, kein Touristenkitsch, einfach schön zum Hinaufblicken. Der <em>Ouseburn Valley</em> südöstlich des Zentrums ist das kreative Viertel — Brauereien, Ateliers, kleine Cafés in alten Industriegebäuden.
+            <br><br>
+            <strong>Essen:</strong> Geordies essen gerne, gut und ohne Firlefanz. Sonntagsmarkt auf dem Quayside mit Street-Food-Trucks. Fish & Chips mit lokaler Tradition. Newcastle hat sich zur Curry-Stadt entwickelt — grosse Auswahl an indischen Restaurants. <em>Greggs</em> wurde hier erfunden — wer einen Sausage Roll ablehnt, versteht Geordie-Kultur nicht.
+            <br><br>
+            <strong>Geheimtipp:</strong> <em>Träkol</em> unter der Tyne Bridge — ein Restaurant in Schiffscontainern, auf der Gateshead-Seite, Lagerfeuerküche und Lindisfarne Oysters. Abenddämmerung mit Blick auf die beleuchteten Brücken ist unvergesslich.
+          </div>
+        </div>
+
+        <div class="club-card">
+          <div class="club-name" style="font-size: 20px; margin-bottom: 12px;">🔴⚪ Sunderland<small>275'000 Einwohner · Black Cats Country</small></div>
+          <div class="club-desc">
+            Sunderland ist eine Post-Industriestadt, die durch Jahrzehnte des Niedergangs gegangen ist — Werften, Kohle, alles weg — und die dadurch eine Identität entwickelt hat, die fast schon schmerzhaft direkt ist. Die Netflix-Doku «Sunderland 'Til I Die» hat das gut eingefangen. Die Stadt ist rauer als Newcastle, aber ehrlicher in dem, was sie ist.
+            <br><br>
+            <strong>Was Touristen sehen:</strong> Stadium of Light, Wearmouth Bridge, National Glass Centre (Sunderland war Glasherstellungs-Zentrum Englands).
+            <br><br>
+            <strong>Was Locals wissen:</strong> Der <em>Roker Beach</em> nördlich der Stadt — ein echter Nordseestrand, leer ausserhalb des Sommers, mit dem alten Leuchtturm und einer besten Promenade mit Meerblick. Der <em>Sunniside-Viertel</em> im Stadtzentrum ist das aufkommende Gastro-Gebiet mit unabhängigen Bars und Restaurants. Die Werften-Geschichte ist überall präsent — Stadtmuseum zeigt die erstaunliche Geschichte des Schiffbaus.
+            <br><br>
+            <strong>Essen:</strong> Stottie cake — das lokale Brot, schwer und dicht, belegt mit Brown Sauce und Speck, das Frühstück in Sunderland. Chippies (Fish-and-Chip-Shops) mit Tradition. Pubs rund ums Stadium of Light füllen sich vor und nach Spielen.
+            <br><br>
+            <strong>Geheimtipp:</strong> Das <em>Tyne-Wear-Derby</em> Newcastle vs. Sunderland ist eines der bittersten Derbys Englands — 25 km trennen die Stadien, aber Welten die Fangemeinden. Im Herbst nach beiden Städten in einer Woche zu fahren, ist ein echtes Nordengland-Erlebnis.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section-note" style="margin-top: 24px;">
+      <h4>Nordengland · Die grosse Klammer</h4>
+      Newcastle und Sunderland sind 25 km voneinander entfernt, per Zug in 20 Minuten verbunden. Middlesbrough liegt weitere 40 km südlich. Alle drei an einem verlängerten Wochenende machbar. Der Norden Englands hat eine Essenskultur, die sich in den letzten Jahren stark entwickelt hat — Sunday Roast, Seafood, indische Küche — ohne die Arroganz Londons.
+    </div>
+  </section>
+
+  <!-- SCHOTTLAND -->
+  <section id="schottland" class="region-section">
+    <div class="region-hero">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Glasgow_from_the_south_bank_2.jpg/1200px-Glasgow_from_the_south_bank_2.jpg" alt="Glasgow skyline" loading="lazy">
+      <div class="region-hero-overlay">
+        <h2>Schottland · Glasgow</h2>
+        <div class="subtitle">Celtic · Rangers — Old Firm Derby, eines der intensivsten Derbys der Welt</div>
+      </div>
+    </div>
+    <div class="clubs-grid">
+
+      <div class="club-card">
+        <div class="club-top">
+          <div class="club-name">Celtic FC<small>The Bhoys · Gegründet 1887</small></div>
+          <div class="liga-badge liga-scottish">Scottish Prem.</div>
+        </div>
+        <div class="club-meta">
+          <div class="meta-item">Stadion <span>Celtic Park</span></div>
+          <div class="meta-item">Kapazität <span>60'411</span></div>
+        </div>
+        <div class="club-desc">
+          Einer der grössten Clubs der britischen Insel, regelmässig in der Champions League. Saison 2025/26: Titelrennen mit Hearts und Rangers — ungewöhnlich offene Meisterschaft. Celtic Park bei Heimspielen ist laut und imposant. Grün-Weiss, irisch-katholische Identität.
+        </div>
+        <div class="club-fans">
+          <strong>Fankultur</strong>
+          Celtic wurde 1887 von der irischen Einwanderergemeinschaft Glasgow gegründet — die Verbindung zu Irland, irischem Republikanismus und dem katholischen Glauben ist bis heute prägend. Ultras-Gruppe: <em>Green Brigade</em> (gegründet 2006) — explizit anti-faschistisch, links, pro-palästinensisch, pro-schottische Unabhängigkeit. Bei Europa-Spielen: spektakuläre Tifos. Verhältnis zur Vereinsführung: chronisch angespannt. Die Green Brigade wurde 2025/26 wiederholt gesperrt.
+        </div>
+        <div class="club-note">Auswärtstickets für neutrale Fans sind sehr knapp — Heimtickets leichter erhältlich.</div>
+      </div>
+
+      <div class="club-card">
+        <div class="club-top">
+          <div class="club-name">Rangers FC<small>Gers · Gegründet 1872</small></div>
+          <div class="liga-badge liga-scottish">Scottish Prem.</div>
+        </div>
+        <div class="club-meta">
+          <div class="meta-item">Stadion <span>Ibrox Stadium</span></div>
+          <div class="meta-item">Kapazität <span>51'082</span></div>
+        </div>
+        <div class="club-desc">
+          Der traditionsreichste Club der Welt (54 Meistertitel). Ibrox ist eines der ältesten Bundesligastadien der Welt, architektonisch beeindruckend. Blau-Weiss, protestantisch-unionistische Identität. Gegensatz zu Celtic ist gelebte Stadtgeschichte.
+        </div>
+        <div class="club-fans">
+          <strong>Fankultur</strong>
+          Rangers-Fans identifizieren sich mit protestantischer Tradition, dem Britischen Königshaus und dem Unionismus (gegen schottische Unabhängigkeit). Ultras-Gruppe: <em>Union Bears</em> (gegründet 2011), Nordkurve von Ibrox. Die politische Dimension des Old Firm ist nicht stilisiert — sie ist historisch gewachsen und im Alltag spürbar. 2025: Beim Ligapokalfinale gegen Celtic kam es zu Auseinandersetzungen beider Fanlager in der Glasgower Innenstadt.
+        </div>
+        <div class="club-note">Celtic Park und Ibrox liegen nur 6 km voneinander — beide in einem Tag besuchbar.</div>
+      </div>
+
+      <div class="club-card">
+        <div class="club-top">
+          <div class="club-name">Heart of Midlothian<small>Hearts · Gegründet 1874</small></div>
+          <div class="liga-badge liga-scottish">Scottish Prem.</div>
+        </div>
+        <div class="club-meta">
+          <div class="meta-item">Stadion <span>Tynecastle Park</span></div>
+          <div class="meta-item">Kapazität <span>19'855</span></div>
+        </div>
+        <div class="club-desc">
+          Club aus Edinburgh, in der Saison 2025/26 überraschend Tabellenführer und Titelfavorit — erstmals seit 40 Jahren könnte jemand ausserhalb von Glasgow Meister werden. Nur 75 km von Glasgow. Tynecastle ist eine enge, stimmungsvolle Schüssel.
+        </div>
+        <div class="club-fans">
+          <strong>Fankultur</strong>
+          Hearts-Fans in Edinburgh tragen ihre Rivalität zu Hibernian (der anderen Edinburgh-Mannschaft) mit viel Intensität aus — das «Edinburgh Derby» ist weniger politisch als das Old Firm, aber persönlicher. Die Begeisterung in der Hauptstadtsaison 2025/26 ist historisch: Wenn Hearts tatsächlich Meister würden, wäre das ein nationaler Moment für ganz Schottland ausserhalb Glasgows.
+        </div>
+      </div>
+
+      <div class="club-card">
+        <div class="club-top">
+          <div class="club-name">Partick Thistle<small>Jags · Gegründet 1876</small></div>
+          <div class="liga-badge liga-3">Championship</div>
+        </div>
+        <div class="club-meta">
+          <div class="meta-item">Stadion <span>Firhill Stadium</span></div>
+          <div class="meta-item">Kapazität <span>10'102</span></div>
+        </div>
+        <div class="club-desc">
+          Der «dritte» Glasgower Club, bekannt für Unabhängigkeit und schwarzen Humor. Spielt in der Scottish Championship (Liga 2). Günstig, authentisch, keine Touristenfalle.
+        </div>
+        <div class="club-fans">
+          <strong>Fankultur</strong>
+          Partick Thistle-Fans definieren sich bewusst in Abgrenzung zum Old Firm — kein religiöser Hintergrund, keine politische Aufladung, schwarzer Humor über die eigene Mittelmässigkeit. Ihr Motto: «No one likes us, we don't care.» Fanclub-geführt, günstig, offen für Gäste. Der perfekte Kontrapunkt zu Celtic und Rangers — echter Glasgower Arbeiterklub ohne Weltbühne.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SCHOTTLAND STÄDTE -->
+    <div style="margin-top: 48px;">
+      <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 1px; margin-bottom: 24px; color: var(--accent);">Die Städte</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;">
+
+        <div class="club-card">
+          <div class="club-name" style="font-size: 20px; margin-bottom: 12px;">🟢🔵 Glasgow<small>640'000 Einwohner · «Dear Green Place»</small></div>
+          <div class="club-desc">
+            Glasgow ist das Gegenteil von Edinburgh: rauer, direkter, urbaner, weniger auf Touristen ausgelegt. Die Stadt hat Charakter — im besten Sinne. Shipbuilding-Geschichte, starke Arbeiteridentität, eine der aktivsten Musikszenen Grossbritanniens, und eine Essenskultur, die London in den letzten 15 Jahren zunehmend überflügelt hat.
+            <br><br>
+            <strong>Was Touristen sehen:</strong> Kelvingrove Art Gallery, Glasgow Cathedral, George Square.
+            <br><br>
+            <strong>Was Locals wissen:</strong> <em>Finnieston</em> ist das Szene-Viertel — früher Schiffswerft, heute Restaurants, Bars, Boutiquen auf der Argyle Street. Gilt als eines der «coolsten Viertel Grossbritanniens» laut Telegraph. <em>The Barras</em> (East End) ist der legendäre Flohmarkt der Stadt — Vintage-Klamotten, Haushaltswaren, schottische Obskuritäten, echte Arbeiter-Atmosphäre. Nicht aufgehübscht, nicht touristisch — real. Das <em>Glasgow School of Art</em> Gebäude (Charles Rennie Mackintosh) sollte man von aussen betrachten — einzigartige Architektur, noch teilweise nach dem Brand in Restaurierung. <em>Tennent's Brauerei</em> bietet Führungen mit Verkostung an — sehr beliebt bei Einheimischen.
+            <br><br>
+            <strong>Essen:</strong> Cullen Skink (Räucherlachs-Suppe) in einem klassischen Pub. Haggis mit Neeps and Tatties — schottische Mahlzeit ohne Schnörkel. <em>Crabshakk</em> in Finnieston für Seafood. Spätabends BYOB Curry-Restaurants auf Sauchiehall Street — bring own Wein, zahle wenig, iss gut. Tunnock's Tea Cakes als Strassensnack. Whisky: im <em>Pot Still</em> auf Hope Street, angeblich eine der grössten Whisky-Auswahlen der Welt in einem schlichten Pub.
+            <br><br>
+            <strong>Geheimtipp:</strong> Das <em>Hidden Lane</em> in Finnieston — eine versteckte Gasse mit kleinen Ateliers, Läden und einem Tearoom, unsigniert von der Strasse aus, komplett unter dem Radar der Touristen.
+          </div>
+        </div>
+
+        <div class="club-card">
+          <div class="club-name" style="font-size: 20px; margin-bottom: 12px;">💜 Edinburgh<small>550'000 Einwohner · 75 km von Glasgow</small></div>
+          <div class="club-desc">
+            Edinburgh ist Schottlands Hauptstadt und das Postkarten-Gesicht des Landes — mittelalterliche Altstadt, Burg auf dem Felsen, Georgian New Town. Für einen Fussball-Trip weniger relevant (Hearts spielt hier, aber die Stadt lebt weniger für Fussball als Glasgow), aber als Tagesausflug oder Verlängerung unbedingt einen Blick wert.
+            <br><br>
+            <strong>Was Touristen sehen:</strong> Edinburgh Castle, Royal Mile, Arthur's Seat (250m Hügel mitten in der Stadt, freier Aufstieg, grandioser Blick).
+            <br><br>
+            <strong>Was Locals wissen:</strong> <em>Leith</em> nördlich des Zentrums ist der coolere, unaufgeregtere Teil der Stadt — Hafenviertel mit Restaurants, kleinen Bars, Märkten. Viel günstiger als die Altstadt. Die <em>Grassmarket</em> unter der Burg ist abends belebt, aber von Touristen geprägt — schön anzusehen, aber für Einheimische eher zum Durchwandern. Wer Edinburgh wirklich will: muss in die Seitenstrassen gehen.
+            <br><br>
+            <strong>Essen:</strong> Scotch Pie, Smoked Salmon direkt vom Markt, Edinburgh Rock (Süssigkeit). Die Whisky Experience auf der Royal Mile ist touristisch, aber instruktiv. <em>Valvona &amp; Crolla</em> in der neuen Stadt ist Italiens beste Deli ausserhalb Italiens — seit 1934 in Edinburgh.
+            <br><br>
+            <strong>Geheimtipp:</strong> Sonnenaufgang auf <em>Arthur's Seat</em> — komplett gratis, kein Touristenaufkommen frühmorgens, Panoramablick auf die ganze Stadt und den Firth of Forth. Eine der besten Erfahrungen in ganz Schottland.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section-note" style="margin-top: 24px;">
+      <h4>Schottland · Die grosse Klammer</h4>
+      Glasgow und Edinburgh sind 75 km und 50 Zugminuten voneinander entfernt — ein natürlicher Doppelpack. Celtic Park und Ibrox liegen 6 km voneinander in Glasgow. Das Old Firm Derby ist religionsähnlich aufgeladen — Celtic (grün, irisch-katholisch) vs. Rangers (blau, protestantisch-unionistisch). Als neutrale Gruppe sind Heimspiele beider Clubs im Herbst gut zugänglich, Derby-Tickets hingegen extrem knapp.
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Zusammengestellt Mai 2026 · Ligen- und Tabellenstand per Saisonende 2025/26 · Ohne Gewähr auf Ligastatus 2026/27 für laufende Relegationsspiele
+</footer>
+
+<script>
+  function showRegion(id, btn) {
+    document.querySelectorAll('.region-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    // Lazy-load images when tab becomes visible
+    document.querySelectorAll(`#${id} img[data-src]`).forEach(img => {
+      img.src = img.dataset.src;
+      img.removeAttribute('data-src');
+    });
+  }
+
+  // Unsplash image map: card title keyword → image URL
+  const CLUB_IMAGES = {
+    'Borussia Dortmund':   'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Dortmund_Signal_Iduna_Park_1.jpg/800px-Dortmund_Signal_Iduna_Park_1.jpg',
+    'FC Schalke 04':       'https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Veltins_Arena_Schachtanlage.jpg/800px-Veltins_Arena_Schachtanlage.jpg',
+    'VfL Bochum':          'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Vonovia_Ruhrstadion_Bochum_2018.jpg/800px-Vonovia_Ruhrstadion_Bochum_2018.jpg',
+    'MSV Duisburg':        'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/MSV_Arena_Duisburg_2013.jpg/800px-MSV_Arena_Duisburg_2013.jpg',
+    'Rot-Weiss Essen':     'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Stadion_Hafenstrasse_2017.jpg/800px-Stadion_Hafenstrasse_2017.jpg',
+    'US Lecce':            'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Lecce-StadioViadelMare.jpg/800px-Lecce-StadioViadelMare.jpg',
+    'SSC Bari':            'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Stadio_San_Nicola%2C_Bari.jpg/800px-Stadio_San_Nicola%2C_Bari.jpg',
+    'Calcio Foggia':       'https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Stadio_Pino_Zaccheria.jpg/800px-Stadio_Pino_Zaccheria.jpg',
+    'Newcastle United':    'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/St_James%27_Park%2C_Newcastle_upon_Tyne.jpg/800px-St_James%27_Park%2C_Newcastle_upon_Tyne.jpg',
+    'AFC Sunderland':      'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Stadium_of_Light_2016.jpg/800px-Stadium_of_Light_2016.jpg',
+    'Middlesbrough':       'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Riverside_Stadium_from_Transporter_Bridge.jpg/800px-Riverside_Stadium_from_Transporter_Bridge.jpg',
+    'Hartlepool':          'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Victoria_Park_Hartlepool.jpg/800px-Victoria_Park_Hartlepool.jpg',
+    'Celtic FC':           'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Celtic_Park_2023.jpg/800px-Celtic_Park_2023.jpg',
+    'Rangers FC':          'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Ibrox_Stadium_2018.jpg/800px-Ibrox_Stadium_2018.jpg',
+    'Heart of Midlothian': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Tynecastle_Park_2017.jpg/800px-Tynecastle_Park_2017.jpg',
+    'Partick Thistle':     'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Firhill_Stadium.jpg/800px-Firhill_Stadium.jpg',
+  };
+
+  const CITY_IMAGES = {
+    'Dortmund':      'https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Dortmund_-_Blick_vom_Florianturm_01_ies.jpg/800px-Dortmund_-_Blick_vom_Florianturm_01_ies.jpg',
+    'Gelsenkirchen': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Gelsenkirchen_Innenstadt_Hauptbahnhof.jpg/800px-Gelsenkirchen_Innenstadt_Hauptbahnhof.jpg',
+    'Bochum':        'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Bochum_-_Husemannplatz_01_ies.jpg/800px-Bochum_-_Husemannplatz_01_ies.jpg',
+    'Duisburg':      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Landschaftspark_Duisburg_Nord_-_Hochofen_5.jpg/800px-Landschaftspark_Duisburg_Nord_-_Hochofen_5.jpg',
+    'Essen':         'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Aerial_image_of_shaft_12_of_the_Zollverein_Coal_Mine_Industrial_Complex_in_Essen_%28view_from_the_east%29.jpg/800px-Aerial_image_of_shaft_12_of_the_Zollverein_Coal_Mine_Industrial_Complex_in_Essen_%28view_from_the_east%29.jpg',
+    'Lecce':         'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Lecce_-_Basilica_di_Santa_Croce_01.jpg/800px-Lecce_-_Basilica_di_Santa_Croce_01.jpg',
+    'Bari':          'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Bari_-_Basilica_di_San_Nicola.jpg/800px-Bari_-_Basilica_di_San_Nicola.jpg',
+    'Foggia':        'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Foggia_-_Cattedrale_di_Santa_Maria_Icona_Vetere_01.jpg/800px-Foggia_-_Cattedrale_di_Santa_Maria_Icona_Vetere_01.jpg',
+    'Newcastle':     'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Tyne_Bridge%2C_Newcastle_upon_Tyne_%28cropped%29.jpg/800px-Tyne_Bridge%2C_Newcastle_upon_Tyne_%28cropped%29.jpg',
+    'Sunderland':    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Wearmouth_Bridge_and_Stadium_of_Light.jpg/800px-Wearmouth_Bridge_and_Stadium_of_Light.jpg',
+    'Glasgow':       'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Glasgow_from_the_south_bank_2.jpg/800px-Glasgow_from_the_south_bank_2.jpg',
+    'Edinburgh':     'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Edinburgh_Castle_from_the_North.JPG/800px-Edinburgh_Castle_from_the_North.JPG',
+  };
+
+  function injectImages() {
+    // Club cards — match by club name text content
+    document.querySelectorAll('.club-card').forEach(card => {
+      const nameEl = card.querySelector('.club-name');
+      if (!nameEl) return;
+      const nameText = nameEl.childNodes[0].textContent.trim();
+      const match = Object.keys(CLUB_IMAGES).find(k => nameText.startsWith(k.split(' ')[0]) && nameText.includes(k.split(' ').slice(-1)[0]));
+      if (!match) return;
+      if (card.querySelector('.club-img')) return; // already injected
+      const img = document.createElement('img');
+      img.className = 'club-img img-skeleton';
+      img.alt = match;
+      img.src = CLUB_IMAGES[match];
+      img.onload = () => img.classList.remove('img-skeleton');
+      img.onerror = () => { img.src = 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=700&q=75&fit=crop'; };
+      card.insertBefore(img, card.firstChild);
+    });
+
+    // City description cards — match by emoji+city name heading
+    document.querySelectorAll('.club-card').forEach(card => {
+      const heading = card.querySelector('.club-name');
+      if (!heading) return;
+      const headText = heading.childNodes[0].textContent;
+      const cityMatch = Object.keys(CITY_IMAGES).find(c => headText.includes(c));
+      if (!cityMatch) return;
+      if (card.querySelector('.city-img')) return;
+      if (card.querySelector('.club-img')) return; // don't double-up
+      const img = document.createElement('img');
+      img.className = 'city-img img-skeleton';
+      img.alt = cityMatch;
+      img.src = CITY_IMAGES[cityMatch];
+      img.onload = () => img.classList.remove('img-skeleton');
+      img.onerror = () => img.style.display = 'none';
+      card.insertBefore(img, card.firstChild);
+    });
+  }
+
+  // Run on load
+  document.addEventListener('DOMContentLoaded', injectImages);
+</script>
+</body>
+</html>
