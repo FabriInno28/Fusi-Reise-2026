@@ -1,40 +1,17 @@
-# ⚽ Fussballreise 2026
+# Fusi Reise 2026
 
-Unsere jährliche Fussballreise — drei Destinationen zur Auswahl, alle Clubs recherchiert, Fakten gesammelt, noch keine Bewertung.
+Seit über zwei Jahrzehnten unterwegs. 2026 geht es über Kaiserstuhl und Deidesheim zum Betzenberg, danach nach Koblenz, in die BayArena und zum Finale nach Köln.
 
-**Live-Seite:** [fussballreise-2026 auf GitHub Pages](https://DEIN-USERNAME.github.io/fussballreise-2026/)
+## Live
 
----
+**https://fabriinno28.github.io/Fusi-Reise-2026/**
 
-## Was drinsteckt
+Die Seite ist als cineastisches, mobiles Reisemagazin gebaut. Fussball bildet die Klammer. Die Orte dazwischen werden als eigene Geschichten erzählt.
 
-- **4 Regionen:** Ruhrpott · Apulien · Nordengland · Schottland
-- **16 Clubs:** Von Liga 1 bis Liga 4 — mit Stadion, Kapazität, Ligastatus
-- **Fankultur** pro Club: Ultras, Atmosphäre, Identität, Rivalitäten
-- **Stadtbeschreibungen:** Touristen-Highlights + echte Insider-Tipps + Essen
-- **Bilder:** Stadion- und Stadtfotos via Wikimedia Commons (lizenzfrei)
+## Veröffentlichung
 
-## Datenstand
-
-Zusammengestellt Mai 2026 · Ligen- und Tabellenstand per Saisonende 2025/26  
-Ligastatus einzelner Clubs (Lecce, RW Essen) noch offen — laufende Relegationsspiele.
+GitHub Pages veröffentlicht automatisch aus dem Branch `main`.
 
 ---
 
-## GitHub Pages aktivieren
-
-1. Repository erstellen (z.B. `fussballreise-2026`)
-2. Diese Dateien hochladen
-3. → **Settings → Pages → Branch: main → / (root) → Save**
-4. Nach 1–2 Minuten ist die Seite live unter `https://DEIN-USERNAME.github.io/fussballreise-2026/`
-
-## Dateien
-
-```
-index.html   ← die eigentliche Seite (alles in einer Datei)
-README.md    ← diese Datei
-```
-
----
-
-*Erstellt mit Claude · Anthropic*
+*Für die Jungs. Nicht für den Algorithmus.*
