@@ -134,6 +134,29 @@ a{color:inherit;text-decoration:none}
 .sign{display:flex;justify-content:space-between;gap:22px;border-top:1px solid rgba(255,255,255,.24);padding-top:19px;margin-top:34px;max-width:910px;text-transform:uppercase;letter-spacing:.17em;font-size:8px;color:#968e86}
 footer{background:#0d0d0e;color:#746c65;border-top:1px solid rgba(255,255,255,.08);padding:28px 0 38px;font-size:8px;letter-spacing:.12em;text-transform:uppercase}
 footer .f{display:flex;justify-content:space-between;gap:24px}
+
+/* DRIVER NAV */
+.driver-tab{position:fixed;z-index:1002;right:18px;top:54px;border:1px solid rgba(255,255,255,.28);background:rgba(17,16,16,.86);backdrop-filter:blur(12px);color:#fff;border-radius:999px;padding:11px 14px;font:800 9px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 30px rgba(0,0,0,.18)}
+.driver-tab span{color:#dfbd78;margin-right:6px}
+.driver-panel{position:fixed;z-index:1100;inset:0 0 0 auto;width:min(520px,100%);background:#141313;color:#f3ece2;transform:translateX(102%);transition:transform .42s var(--ease);box-shadow:-20px 0 60px rgba(0,0,0,.38);overflow:auto}
+.driver-panel.open{transform:none}
+.driver-head{position:sticky;top:0;z-index:2;background:rgba(20,19,19,.96);backdrop-filter:blur(12px);padding:24px 22px 19px;border-bottom:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.driver-head h2{font-family:var(--serif);font-size:38px;font-weight:400;line-height:.9;letter-spacing:-.04em;margin:6px 0 0}
+.driver-close{border:1px solid rgba(255,255,255,.18);background:transparent;color:white;border-radius:999px;width:38px;height:38px;font-size:20px;cursor:pointer}
+.driver-intro{padding:18px 22px;color:#a9a19a;font-size:13px;line-height:1.55;border-bottom:1px solid rgba(255,255,255,.08)}
+.driver-day{padding:24px 22px 7px;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#d6b36f;font-weight:800}
+.navstop{margin:0 14px 11px;padding:16px;border:1px solid rgba(255,255,255,.1);background:#1b1919;border-radius:16px}
+.navstop-top{display:flex;gap:12px;align-items:flex-start}
+.navnum{flex:0 0 29px;height:29px;border-radius:50%;display:grid;place-items:center;background:#a41620;color:white;font-size:10px;font-weight:800}
+.navstop h3{font-family:var(--serif);font-size:23px;font-weight:400;line-height:1;margin:1px 0 6px}
+.navstop address{font-style:normal;color:#bbb2aa;font-size:12px;line-height:1.48}
+.navnote{font-size:11px;line-height:1.45;color:#8f867f;margin:9px 0 0 41px}
+.navactions{display:flex;gap:8px;margin:13px 0 0 41px}
+.navactions a,.navactions button{appearance:none;border:1px solid rgba(255,255,255,.15);background:#232020;color:#eee5da;border-radius:999px;padding:9px 11px;font:700 9px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;cursor:pointer}
+.navactions a.primary{background:#eee5da;color:#181515;border-color:#eee5da}
+.copy-ok{color:#d8b876!important}
+.driver-backdrop{position:fixed;z-index:1090;inset:0;background:rgba(0,0,0,.48);opacity:0;pointer-events:none;transition:opacity .35s ease}
+.driver-backdrop.open{opacity:1;pointer-events:auto}
 .sources{margin-top:18px;text-transform:none;letter-spacing:0;line-height:1.55;font-size:10px;max-width:900px;color:#655e58}
 .sources a{text-decoration:underline}
 
@@ -154,6 +177,9 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
   .gallery{grid-template-columns:1fr 1fr;grid-template-rows:300px 205px 245px}.gallery figure:first-child{grid-column:1/3;grid-row:auto}.gallery figure:last-child{grid-column:1/3}
   .final{min-height:84svh}.final h2{font-size:clamp(69px,20vw,120px)}.sign{flex-direction:column}
   footer .f{flex-direction:column}
+  .driver-tab{right:12px;top:auto;bottom:14px;padding:12px 14px;box-shadow:0 10px 34px rgba(0,0,0,.35)}
+  .driver-panel{width:100%}
+  .driver-head{padding-top:20px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ribbon-track{animation:none}.js .reveal{opacity:1;transform:none;transition:none}}
 </style>
@@ -162,6 +188,33 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
 <body>
 <div class="progress" id="progress"></div>
 <div class="top"><div>FUSI REISE · 2026</div><div id="chapter">Der Trailer</div></div>
+<button class="driver-tab" id="driverOpen" type="button" aria-controls="driverPanel" aria-expanded="false"><span>↗</span> Fahrer</button>
+<div class="driver-backdrop" id="driverBackdrop"></div>
+<aside class="driver-panel" id="driverPanel" aria-hidden="true">
+  <div class="driver-head">
+    <div><div class="kicker">Alles fürs Navi</div><h2>Fahrer.</h2></div>
+    <button class="driver-close" id="driverClose" type="button" aria-label="Fahrerbereich schliessen">×</button>
+  </div>
+  <div class="driver-intro">Alle Ziele in Reise-Reihenfolge. «Navi öffnen» startet Google Maps, «Kopieren» legt die Adresse in die Zwischenablage. Bei Dr. Heger und von Winning sind die empfohlenen Navi- bzw. Parkplatzadressen hinterlegt.</div>
+
+  <div class="driver-day">Freitag · Kaiserstuhl & Deidesheim</div>
+  <div class="navstop"><div class="navstop-top"><div class="navnum">1</div><div><h3>Weingut Dr. Heger</h3><address>Schulweg, 79241 Ihringen</address></div></div><div class="navnote">Offizielle Navi-Empfehlung des Weinguts. Hausadresse: Bachenstrasse 19/21.</div><div class="navactions"><a class="primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Schulweg%2C%2079241%20Ihringen">Navi öffnen</a><button class="copy-address" data-address="Schulweg, 79241 Ihringen">Kopieren</button></div></div>
+  <div class="navstop"><div class="navstop-top"><div class="navnum">2</div><div><h3>Goldener Engel</h3><address>Bachenstrasse 27, 79241 Ihringen</address></div></div><div class="navnote">12.15 Uhr reserviert. Von Heger nur wenige Schritte entfernt.</div><div class="navactions"><a class="primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bachenstrasse%2027%2C%2079241%20Ihringen">Navi öffnen</a><button class="copy-address" data-address="Bachenstrasse 27, 79241 Ihringen">Kopieren</button></div></div>
+  <div class="navstop"><div class="navstop-top"><div class="navnum">3</div><div><h3>Kaisergarten Hotel</h3><address>Weinstrasse 12, 67146 Deidesheim</address></div></div><div class="navnote">Freitagnacht. Zwei Standard Doppelzimmer bestätigt.</div><div class="navactions"><a class="primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Weinstrasse%2012%2C%2067146%20Deidesheim">Navi öffnen</a><button class="copy-address" data-address="Weinstrasse 12, 67146 Deidesheim">Kopieren</button></div></div>
+  <div class="navstop"><div class="navstop-top"><div class="navnum">4</div><div><h3>Von Winning & LEOPOLD</h3><address>Parkplatz: Weinstrasse 8, 67146 Deidesheim</address></div></div><div class="navnote">Weingut und Restaurant: Weinstrasse 10. Vinothek bestätigt, LEOPOLD 19.30 Uhr reserviert.</div><div class="navactions"><a class="primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Weinstrasse%208%2C%2067146%20Deidesheim">Navi öffnen</a><button class="copy-address" data-address="Weinstrasse 8, 67146 Deidesheim">Kopieren</button></div></div>
+
+  <div class="driver-day">Samstag · Betze & Koblenz</div>
+  <div class="navstop"><div class="navstop-top"><div class="navnum">5</div><div><h3>Fritz Walter Stadion</h3><address>Fritz Walter Strasse 1, 67663 Kaiserslautern</address></div></div><div class="navnote">Stadionadresse nur zur Orientierung: Am Spieltag gibt es im direkten Umfeld keine öffentlichen Parkplätze. P+R bzw. Ticketinformationen beachten.</div><div class="navactions"><a class="primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Fritz-Walter-Strasse%201%2C%2067663%20Kaiserslautern">Navi öffnen</a><button class="copy-address" data-address="Fritz-Walter-Strasse 1, 67663 Kaiserslautern">Kopieren</button></div></div>
+  <div class="navstop"><div class="navstop-top"><div class="navnum">6</div><div><h3>sander Hotel</h3><address>Casinostrasse 17, 56068 Koblenz</address></div></div><div class="navnote">Samstagnacht. Tiefgarage nach Verfügbarkeit.</div><div class="navactions"><a class="primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Casinostrasse%2017%2C%2056068%20Koblenz">Navi öffnen</a><button class="copy-address" data-address="Casinostrasse 17, 56068 Koblenz">Kopieren</button></div></div>
+  <div class="navstop"><div class="navstop-top"><div class="navnum">7</div><div><h3>Gerhards Genussgesellschaft</h3><address>Esther Bejarano Strasse 3, 56068 Koblenz</address></div></div><div class="navnote">Im Blumenhof beim Deutschen Eck. 20.15 Uhr reserviert.</div><div class="navactions"><a class="primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Esther-Bejarano-Strasse%203%2C%2056068%20Koblenz">Navi öffnen</a><button class="copy-address" data-address="Esther-Bejarano-Strasse 3, 56068 Koblenz">Kopieren</button></div></div>
+
+  <div class="driver-day">Sonntag · Leverkusen & Köln</div>
+  <div class="navstop"><div class="navstop-top"><div class="navnum">8</div><div><h3>BayArena</h3><address>Bismarckstrasse 122–124, 51373 Leverkusen</address></div></div><div class="navnote">Matchday 02. Parkregelung am Spieltag gemäss Ticket- und Clubinformationen.</div><div class="navactions"><a class="primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bismarckstrasse%20122-124%2C%2051373%20Leverkusen">Navi öffnen</a><button class="copy-address" data-address="Bismarckstrasse 122-124, 51373 Leverkusen">Kopieren</button></div></div>
+  <div class="navstop"><div class="navstop-top"><div class="navnum">9</div><div><h3>Wasserturm Hotel Cologne</h3><address>Kaygasse 2, 50676 Köln</address></div></div><div class="navnote">Sonntagnacht. Tiefgarage am Hotel. Bar Botanik ist im selben Haus.</div><div class="navactions"><a class="primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Kaygasse%202%2C%2050676%20K%C3%B6ln">Navi öffnen</a><button class="copy-address" data-address="Kaygasse 2, 50676 Köln">Kopieren</button></div></div>
+  <div class="navstop"><div class="navstop-top"><div class="navnum">10</div><div><h3>Lütticher</h3><address>Lütticher Strasse 12, 50674 Köln</address></div></div><div class="navnote">20.00 Uhr für vier Personen bestätigt.</div><div class="navactions"><a class="primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=L%C3%BCtticher%20Strasse%2012%2C%2050674%20K%C3%B6ln">Navi öffnen</a><button class="copy-address" data-address="Lütticher Strasse 12, 50674 Köln">Kopieren</button></div></div>
+
+  <div style="height:28px"></div>
+</aside>
 
 <header class="hero" data-chapter="Der Trailer">
   <div class="hero-media">
@@ -208,25 +261,43 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
   <div class="wrap">
     <div class="day-head reveal">
       <div class="day-no">01</div>
-      <div class="day-title"><div class="kicker">Freitag · Pfalz</div><h2>Der Auftakt.</h2><p>Raus aus dem Alltag. Rein in die Reben. Der Fussball wartet noch einen Tag. Freitag gehört dem Wein und einem Start, der nicht hektisch sein muss, um sofort besonders zu sein.</p></div>
+      <div class="day-title"><div class="kicker">Freitag · Kaiserstuhl & Pfalz</div><h2>Der Auftakt.</h2><p>09.00 Uhr los in Luzern. Gegen 11 Uhr das erste Glas in Ihringen, um 12.15 Uhr ein reservierter Tisch im Goldenen Engel. Danach weiter nach Deidesheim. Kein Hakenrennen, sondern ein Freitag, der sich langsam aufbaut.</p></div>
     </div>
 
     <article class="place">
       <div class="photo reveal">
         <img loading="eager" decoding="async" referrerpolicy="no-referrer"
-          src="https://c02.purpledshub.com/uploads/sites/66/2023/11/kultur-architektur-weingut-franz-keller-TMBW.jpg?quality=70&w=1400"
-          data-fallback="FRANZ KELLER"
-          alt="Weingut Franz Keller am Kaiserstuhl">
-        <div class="stamp">Kaiserstuhl · Baden</div>
+          src="https://www.heger-weine.de/files/downloads_1/Downloads/Expertisen%20Weingut%20Dr.%20Heger%20-%20Weinhaus%20Heger/1718TBSVB%20Ihringen%20VORDERER%20WINKLERBERG%20Sp%C3%A4tburgunder%20GG.pdf"
+          data-fallback="DR. HEGER · IHRINGEN"
+          alt="Weingut Dr. Heger in Ihringen am Kaiserstuhl">
+        <div class="stamp">11.00 Uhr angefragt · Ihringen</div>
       </div>
       <div class="copy reveal">
-        <div class="index">01 · Franz Keller</div><h3>Wein, der im Berg beginnt.</h3>
-        <div class="meta">Vogtsburg · VDP · Architektur · Vulkangestein</div>
-        <p>Das Weingut liegt nicht einfach zwischen den Reben. Es ist in die Terrassenlandschaft hineingebaut. Begrünte Dächer, Erde als natürlicher Klimapuffer und Schwerkraft statt unnötiger Pumperei machen die Architektur zu einem Teil der Weinidee.</p>
-        <p>Auch im Wein ist Herkunft wichtiger als Show. Keller arbeitet biologisch, mit reduzierten Erträgen und dem Anspruch, dass Terroir und Charakter im Glas erkennbar bleiben. Genau deshalb ist dieser Ort ein starker Auftakt: schön, aber nicht oberflächlich.</p>
-        <div class="fact"><strong>2024</strong><span>Seit diesem Jahr sind die Weine offiziell biozertifiziert. Der Weg dorthin begann deutlich früher.</span></div>
+        <div class="index">01 · Dr. Heger</div><h3>Das erste Glas gehört dem Kaiserstuhl.</h3>
+        <div class="meta">Ihringen · VDP · Winklerberg · Familiengeführt seit 1935</div>
+        <p>Dr. Heger ist eng mit dem Ihringer Winklerberg und dem Achkarrer Schlossberg verbunden. Vulkanisches Gestein, Wärme und steile Lagen prägen vor allem Burgundersorten und Riesling. Ein Weingut, das nicht über Lautstärke funktioniert, sondern über Herkunft und Präzision.</p>
+        <p>Unsere Idee ist bewusst klein: gegen 11 Uhr ankommen, einige Weine in der Vinothek probieren und nach 45 bis 60 Minuten zu Fuss weiterziehen. Die Anfrage ist verschickt. Mehr Programm braucht der erste Stopp nicht.</p>
+        <div class="fact"><strong>5</strong><span>Weine umfasst die reguläre Verkostung in der Vinothek. Für vier Personen ist normalerweise keine Gruppenanmeldung nötig.</span></div>
         <div class="why">Der Moment, in dem aus Anreise Fusi Reise wird.</div>
-        <div class="chips"><span>Spätburgunder</span><span>Architektur</span><span>Erstes Glas</span></div>
+        <div class="chips"><span>11.00 angefragt</span><span>Spätburgunder</span><span>Grauburgunder</span><span>Riesling</span></div>
+      </div>
+    </article>
+
+    <article class="place rev">
+      <div class="photo reveal">
+        <img loading="lazy" decoding="async" referrerpolicy="no-referrer"
+          src="https://engel-ihringen.de/wp-content/uploads/2024/12/goldener-engel-ihringen-1900.jpg"
+          data-fallback="GOLDENER ENGEL · IHRINGEN"
+          alt="Goldener Engel in Ihringen">
+        <div class="stamp">12.15 Uhr reserviert · Ihringen</div>
+      </div>
+      <div class="copy reveal">
+        <div class="index">02 · Goldener Engel</div><h3>Vom ersten Glas direkt an den Mittagstisch.</h3>
+        <div class="meta">Bachenstrasse 27 · Regionale Küche · Wenige Schritte von Heger</div>
+        <p>Genau deshalb funktioniert Ihringen für uns so gut: Nach der Verkostung bei Dr. Heger bleibt das Auto stehen. Der Goldene Engel liegt praktisch um die Ecke und verbindet klassische Wirtshausküche mit französischem Einfluss und einer Weinkarte, die den Kaiserstuhl ernst nimmt.</p>
+        <p>Der Tisch ist für 12.15 Uhr reserviert. Kein Transfer, keine Parkplatzsuche, kein Zeitverlust. Einfach vom Wein zum Essen und danach entspannt weiter Richtung Deidesheim.</p>
+        <div class="why">So fühlt sich ein guter Reiseauftakt an: zwei Orte, ein kurzer Weg, kein Stress.</div>
+        <div class="chips"><span>12.15 reserviert</span><span>Regional</span><span>Zu Fuss</span><span>Kaiserstuhl</span></div>
       </div>
     </article>
 
@@ -239,7 +310,7 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
         <div class="stamp">Deidesheim · Pfalz</div>
       </div>
       <div class="copy reveal">
-        <div class="index">02 · Deidesheim</div><h3>Eine kleine Stadt, die Wein atmet.</h3>
+        <div class="index">03 · Deidesheim</div><h3>Eine kleine Stadt, die Wein atmet.</h3>
         <div class="meta">Deutsche Weinstrasse · Altstadt · Pfälzerwald</div>
         <p>Deidesheim funktioniert für diese Reise, weil hier nichts weit auseinanderliegt. Historische Gassen, Winzerhöfe, Restaurants und Hotels greifen ineinander. Man stellt das Auto ab und ist drin.</p>
         <p>Rundherum liegen Weinberge, Obstfelder und der Pfälzerwald. Im Ort selbst sitzt die Weinkultur nicht hinter Glas. Sie gehört zum Alltag. Das macht Deidesheim nicht museal, sondern lebendig.</p>
@@ -257,7 +328,7 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
         <div class="stamp">Basislager · Deidesheim</div>
       </div>
       <div class="copy reveal">
-        <div class="index">03 · Kaisergarten</div><h3>Das Auto bleibt stehen.</h3>
+        <div class="index">04 · Kaisergarten</div><h3>Das Auto bleibt stehen.</h3>
         <div class="meta">Weinstrasse 12 · Deidesheim</div>
         <p>Der Kaisergarten passt nicht, weil er möglichst spektakulär sein will. Sondern weil er uns mitten in Deidesheim absetzt. Moderne Zimmer, ruhige Architektur und vor der Tür alles, was der erste Abend braucht.</p>
         <p>Das Hotel gehört zum Ensemble rund um den Ketschauer Hof und trägt die Pfalz nicht als Dekoration, sondern als Teil seiner Identität. Für uns zählt vor allem: einchecken, Schlüssel in die Tasche und ab jetzt zu Fuss.</p>
@@ -275,12 +346,12 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
         <div class="stamp">Weingut · Deidesheim</div>
       </div>
       <div class="copy reveal">
-        <div class="index">04 · Von Winning</div><h3>Tradition mit Eigensinn.</h3>
+        <div class="index">05 · Von Winning</div><h3>Tradition mit Eigensinn.</h3>
         <div class="meta">Weingut · Deidesheimer Lagen · Charakter</div>
         <p>Von Winning ist ein spannender Gegenpol zum Kaiserstuhl. Historisches Gutshaus, grosse Rieslinglagen und eine Handschrift, die nicht versucht, möglichst neutral zu sein. Hier darf Wein Charakter haben.</p>
-        <p>Das Schöne für unsere Reise: Der Ort funktioniert nicht nur als Weingut. Er führt direkt weiter in den Abend. Aus Probieren wird Sitzenbleiben. Aus Wein wird Essen. Aus Freitag wird Nacht.</p>
+        <p>Für uns bleibt es bewusst unkompliziert: ein Besuch in der Vinothek, ein paar Weine probieren, keine Führung und kein Kellerprogramm. Von Winning hat unseren Besuch bestätigt. Danach geht der Abend praktisch am selben Ort weiter.</p>
         <div class="why">Kein Programmpunkt. Ein Ort, an dem der Abend einfach weiterläuft.</div>
-        <div class="chips"><span>Riesling</span><span>Pinot Noir</span><span>Deidesheim</span></div>
+        <div class="chips"><span>Vinothek bestätigt</span><span>Riesling</span><span>Pinot Noir</span><span>Deidesheim</span></div>
       </div>
     </article>
 
@@ -293,12 +364,12 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
         <div class="stamp">Freitagabend · LEOPOLD</div>
       </div>
       <div class="copy reveal">
-        <div class="index">05 · LEOPOLD</div><h3>Pfälzer Küche ohne Folklore.</h3>
+        <div class="index">06 · LEOPOLD</div><h3>Pfälzer Küche ohne Folklore.</h3>
         <div class="meta">Ehemaliger Pferdestall · Regional · Saisonal</div>
         <p>Das LEOPOLD sitzt im ehemaligen Pferdestall des Weinguts. Gewölbe, Holz, warmes Licht. Kein steriles Fine Dining, sondern ein Raum, in dem man gerne länger sitzen bleibt.</p>
         <p>Auf dem Teller werden regionale Klassiker nicht versteckt, sondern neu und sauber interpretiert. Dazu gibt es die Weine des Hauses in Jahrgangstiefe. Genau die Art Restaurant, die zu uns passt: sehr gut, ohne sich selbst wichtig zu machen.</p>
         <div class="why">Der erste Abend braucht kein Finale. Er braucht einen Tisch, von dem keiner zu früh aufsteht.</div>
-        <div class="chips"><span>Pfälzer Küche</span><span>Wein</span><span>Langer Tisch</span></div>
+        <div class="chips"><span>19.30 reserviert</span><span>Pfälzer Küche</span><span>Wein</span><span>Langer Tisch</span></div>
       </div>
     </article>
   </div>
@@ -340,7 +411,7 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
         <div class="stamp">Rhein trifft Mosel</div>
       </div>
       <div class="copy reveal">
-        <div class="index">06 · Koblenz</div><h3>Zwei Flüsse. Ein anderer Puls.</h3>
+        <div class="index">07 · Koblenz</div><h3>Zwei Flüsse. Ein anderer Puls.</h3>
         <div class="meta">Rhein · Mosel · Altstadt · Deutsches Eck</div>
         <p>Koblenz lebt von seiner Lage. Am Deutschen Eck treffen Rhein und Mosel zusammen. Dahinter beginnt die Altstadt, gegenüber liegt die Festung Ehrenbreitstein. Nach dem Betze fühlt sich das fast wie ein Szenenwechsel im Film an.</p>
         <p>Genau darum passt die Stadt in die Route. Sie konkurriert nicht mit dem Fussball. Sie macht Platz für den Abend danach.</p>
@@ -358,7 +429,7 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
         <div class="stamp">Casinostrasse · Zentrum</div>
       </div>
       <div class="copy reveal">
-        <div class="index">07 · sander</div><h3>Stadt statt Hotelwelt.</h3>
+        <div class="index">08 · sander</div><h3>Stadt statt Hotelwelt.</h3>
         <div class="meta">Koblenz Zentrum · Modern · Unkompliziert</div>
         <p>Das sander steht mitten in der Stadt und macht daraus sein Konzept. Draussen Koblenz, drinnen ein modernes, reduziertes Hotel mit Bar und kurzen Wegen.</p>
         <p>Nach einem Matchday ist das ideal. Kein Resort. Kein Umweg. Kein Anlass, den Abend im Hotel zu verbringen. Zimmer beziehen und wieder raus.</p>
@@ -376,12 +447,12 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
         <div class="stamp">Blumenhof · Deutsches Eck</div>
       </div>
       <div class="copy reveal">
-        <div class="index">08 · Gerhards</div><h3>Gewölbe. Wein. Samstagabend.</h3>
+        <div class="index">09 · Gerhards</div><h3>Gewölbe. Wein. Samstagabend.</h3>
         <div class="meta">Blumenhof · Historischer Raum · Moderne Küche</div>
         <p>Gerhards liegt im Blumenhof direkt beim Deutschen Eck. Der Raum hat Gewölbe und schwere Steinpfeiler, wirkt aber überhaupt nicht museal. Genau diese Mischung macht ihn spannend.</p>
         <p>Die Küche ist regional verwurzelt, aber nicht stehen geblieben. Für uns ist das der richtige Ort nach dem Stadion: genug Qualität für einen besonderen Abend, genug Wärme für vier Jungs, die noch einiges vom Tag zu erzählen haben.</p>
         <div class="why">Nach dem Lärm des Stadions darf der Abend leiser werden. Aber nicht langweiliger.</div>
-        <div class="chips"><span>Blumenhof</span><span>Gewölbe</span><span>Langer Abend</span></div>
+        <div class="chips"><span>20.15 reserviert</span><span>Blumenhof</span><span>Gewölbe</span><span>Langer Abend</span></div>
       </div>
     </article>
   </div>
@@ -430,7 +501,7 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
         <div class="stamp">Köln · 1872</div>
       </div>
       <div class="copy reveal">
-        <div class="index">09 · Wasserturm Hotel</div><h3>Ein Hotel mit Vergangenheit.</h3>
+        <div class="index">10 · Wasserturm Hotel</div><h3>Ein Hotel mit Vergangenheit.</h3>
         <div class="meta">Ehemaliger Wasserturm · Curio Collection · Köln</div>
         <p>1872 wurde der Turm als damals höchster Wasserturm Europas eröffnet. Er versorgte Köln jahrzehntelang mit Trinkwasser, wurde im Krieg schwer beschädigt, stand später leer und begann erst in den 1980er Jahren sein zweites Leben als Hotel.</p>
         <p>Heute sind die alten Backsteinmauern Teil der Inszenierung. Zimmer und Suiten sitzen in einem Gebäude, das nichts von einem normalen Stadthotel hat. Genau deshalb ist es unser richtiger Schlussort.</p>
@@ -449,7 +520,7 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
         <div class="stamp">Ganz oben · Bar Botanik</div>
       </div>
       <div class="copy reveal">
-        <div class="index">10 · Bar Botanik</div><h3>Elf Stockwerke später: Köln.</h3>
+        <div class="index">11 · Bar Botanik</div><h3>Elf Stockwerke später: Köln.</h3>
         <div class="meta">Rooftop · Botanicals · Stadtblick</div>
         <p>Oben wird aus dem alten Wasserturm plötzlich Gegenwart. Glas, Pflanzen, warmes Holz und rundherum Köln. Die Bar Botanik sitzt auf dem Turm und macht aus dem ersten Drink des letzten Abends einen echten Moment.</p>
         <p>Der Kontrast ist perfekt: morgens Koblenz, nachmittags BayArena, abends über den Dächern von Köln. Mehr Fusi Reise Dramaturgie braucht es eigentlich nicht.</p>
@@ -467,12 +538,12 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
         <div class="stamp">Belgisches Viertel · Köln</div>
       </div>
       <div class="copy reveal">
-        <div class="index">11 · Lütticher</div><h3>Kein Gala Dinner. Ein guter letzter Tisch.</h3>
+        <div class="index">12 · Lütticher</div><h3>Kein Gala Dinner. Ein guter letzter Tisch.</h3>
         <div class="meta">Belgisches Viertel · Mediterran · Wein</div>
         <p>Das Lütticher steht mitten im Belgischen Viertel und trifft genau die richtige Flughöhe. Exponierter Backstein, Holz, Wein und eine Küche zwischen Deutschland und Mittelmeer.</p>
         <p>Auf der Karte stehen Dinge, die niemand erklären muss. Frische Zutaten, sauber gekocht. Ein Ort zum Essen und Sitzenbleiben, nicht zum Abfotografieren eines Menüs.</p>
         <div class="why">Die besten Fusi Reise Abende enden nicht mit einem Programmpunkt. Sondern irgendwann.</div>
-        <div class="chips"><span>Belgisches Viertel</span><span>Steak</span><span>Wein</span><span>Finale</span></div>
+        <div class="chips"><span>20.00 reserviert</span><span>Belgisches Viertel</span><span>Wein</span><span>Finale</span></div>
       </div>
     </article>
   </div>
@@ -484,7 +555,7 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
     <h2 class="reveal">Ein Wochenende in fünf Bildern.</h2>
     <div class="gallery reveal">
       <figure><img loading="lazy" referrerpolicy="no-referrer" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/2025-03-07_FCK-SVE_(03).jpg?width=1200" data-fallback="BETZENBERG" alt="Betzenberg"><figcaption>Betzenberg</figcaption></figure>
-      <figure><img loading="lazy" referrerpolicy="no-referrer" src="https://c02.purpledshub.com/uploads/sites/66/2023/11/kultur-architektur-weingut-franz-keller-TMBW.jpg?quality=70&w=1100" data-fallback="KAISERSTUHL" alt="Kaiserstuhl"><figcaption>Kaiserstuhl</figcaption></figure>
+      <figure><img loading="lazy" referrerpolicy="no-referrer" src="https://engel-ihringen.de/wp-content/uploads/2024/12/goldener-engel-ihringen-1900.jpg" data-fallback="IHRINGEN" alt="Ihringen am Kaiserstuhl"><figcaption>Ihringen</figcaption></figure>
       <figure><img loading="lazy" referrerpolicy="no-referrer" src="https://images.daytrip.com/koblenz2.jpg?q=60&w=1100" data-fallback="KOBLENZ" alt="Koblenz"><figcaption>Koblenz</figcaption></figure>
       <figure><img loading="lazy" referrerpolicy="no-referrer" src="https://www.santosfootballplanet.com/uploads/_contentImageSlider/shutterstock_1498120316.jpg?v=1679497443" data-fallback="BAYARENA" alt="BayArena"><figcaption>BayArena</figcaption></figure>
       <figure><img loading="lazy" referrerpolicy="no-referrer" src="https://falstaff.b-cdn.net/storage/2025/02/wasserturm-hotel-cologne-1.jpg?aspect_ratio=4%3A3&crop_gravity=north&width=1000" data-fallback="KÖLN" alt="Wasserturm Köln"><figcaption>Köln</figcaption></figure>
@@ -510,7 +581,7 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
 
 <footer>
   <div class="wrap f"><div>FUSI REISE 2026 · Inoffizielles digitales Reisemagazin</div><div>Für die Jungs. Nicht für den Algorithmus.</div></div>
-  <div class="wrap sources">Bildmaterial wird von den jeweiligen Quellseiten geladen. Falls eine Quelle Hotlinking blockiert, erscheint automatisch ein gestaltetes Fusi-Reise-Motiv statt einer schwarzen Fläche.</div>
+  <div class="wrap sources">Reiseplan aktualisiert mit Dr. Heger und Goldener Engel in Ihringen. Der Fahrerbereich enthält die verifizierten Zieladressen und direkte Navi Links. Bildmaterial wird von den jeweiligen Quellseiten geladen; bei blockiertem Hotlinking erscheint ein Fusi-Reise-Motiv.</div>
 </footer>
 
 <script>
@@ -536,6 +607,37 @@ function updateProgress(){
 }
 addEventListener('scroll',updateProgress,{passive:true});
 updateProgress();
+
+
+const driverOpen=document.getElementById('driverOpen');
+const driverClose=document.getElementById('driverClose');
+const driverPanel=document.getElementById('driverPanel');
+const driverBackdrop=document.getElementById('driverBackdrop');
+function setDriver(open){
+  driverPanel.classList.toggle('open',open);
+  driverBackdrop.classList.toggle('open',open);
+  driverPanel.setAttribute('aria-hidden',open?'false':'true');
+  driverOpen.setAttribute('aria-expanded',open?'true':'false');
+  document.body.style.overflow=open?'hidden':'';
+}
+driverOpen.addEventListener('click',()=>setDriver(true));
+driverClose.addEventListener('click',()=>setDriver(false));
+driverBackdrop.addEventListener('click',()=>setDriver(false));
+addEventListener('keydown',e=>{if(e.key==='Escape')setDriver(false)});
+document.querySelectorAll('.copy-address').forEach(btn=>{
+  btn.addEventListener('click',async()=>{
+    const value=btn.dataset.address||'';
+    try{
+      await navigator.clipboard.writeText(value);
+      const old=btn.textContent;
+      btn.textContent='Kopiert ✓';
+      btn.classList.add('copy-ok');
+      setTimeout(()=>{btn.textContent=old;btn.classList.remove('copy-ok')},1400);
+    }catch(e){
+      prompt('Adresse kopieren:',value);
+    }
+  });
+});
 
 function fallbackImage(img){
   if(img.dataset.fallbackDone) return;
