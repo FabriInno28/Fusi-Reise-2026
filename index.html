@@ -122,19 +122,18 @@ a{color:inherit;text-decoration:none}
 .memory h2{font-family:var(--serif);font-size:clamp(54px,8vw,106px);font-weight:400;line-height:.88;letter-spacing:-.055em;margin:14px 0 0}
 .memory-lead{font-family:var(--serif);font-size:clamp(22px,2.8vw,35px);line-height:1.2;color:#c9c0b6;margin:0}
 .memory-lead em{color:#e0be79}
-.history-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.history-card{appearance:none;border:0;padding:0;margin:0;position:relative;overflow:hidden;background:#211d1c;aspect-ratio:1/1;cursor:pointer;text-align:left}
-.history-card img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),filter .8s var(--ease);filter:saturate(.92) contrast(1.03)}
+.history-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.history-card{appearance:none;border:0;padding:0;margin:0;position:relative;overflow:hidden;background:#211d1c;aspect-ratio:4/3;cursor:pointer;text-align:left;border-radius:2px}
+.history-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .75s var(--ease),filter .6s var(--ease);filter:saturate(.94) contrast(1.02)}
 .history-card:hover img{transform:scale(1.025);filter:saturate(1)}
-.history-card:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,rgba(0,0,0,.72))}
-.history-label{position:absolute;z-index:2;left:15px;right:15px;bottom:14px;color:#fff}
-.history-label small{display:block;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:#d8b876;margin-bottom:5px;font-weight:800}
-.history-label strong{font-family:var(--serif);font-size:22px;font-weight:400;line-height:1.04}
+.history-card:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(0,0,0,.5));opacity:.75}
+.history-card:nth-child(8){aspect-ratio:3/4}
+.history-mark{position:absolute;z-index:2;left:12px;bottom:10px;color:#fff;font:800 8px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;text-shadow:0 1px 8px rgba(0,0,0,.55)}
 .memory-note{margin-top:32px;border-top:1px solid rgba(255,255,255,.15);padding-top:22px;display:flex;justify-content:space-between;gap:30px;color:#918981;font-size:12px;line-height:1.6}
 .memory-note b{font-family:var(--serif);font-size:24px;font-weight:400;color:#eee5da}
 .photo-lightbox{position:fixed;z-index:1500;inset:0;background:rgba(8,8,8,.94);display:grid;place-items:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .28s ease}
 .photo-lightbox.open{opacity:1;pointer-events:auto}
-.photo-lightbox img{max-width:min(1040px,94vw);max-height:86vh;width:auto;height:auto;object-fit:contain;box-shadow:0 20px 70px rgba(0,0,0,.5)}
+.photo-lightbox img{max-width:min(640px,92vw);max-height:84vh;width:auto;height:auto;object-fit:contain;box-shadow:0 20px 70px rgba(0,0,0,.5)}
 .lightbox-close{position:absolute;right:18px;top:18px;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.45);color:white;font-size:24px;cursor:pointer}
 
 /* FINAL */
@@ -187,11 +186,10 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
   .fixture{grid-template-columns:1fr;gap:6px}.team.r{text-align:left}.vs{font-size:23px}.match-story{grid-template-columns:1fr;gap:13px}
   .citygrid{grid-template-columns:1fr;gap:30px}
   .memory-head{grid-template-columns:1fr;gap:22px;margin-bottom:30px}
-  .history-grid{grid-template-columns:1fr 1fr;gap:9px}
-  .history-card{aspect-ratio:1/1}
-  .history-card:first-child{grid-column:1/3;aspect-ratio:1.18/1}
-  .history-label{left:11px;bottom:10px}
-  .history-label strong{font-size:18px}
+  .history-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .history-card{aspect-ratio:4/3}
+  .history-card:nth-child(8){aspect-ratio:3/4}
+  .history-mark{left:9px;bottom:8px;font-size:7px}
   .memory-note{flex-direction:column;gap:8px}
   .final{min-height:84svh}.final h2{font-size:clamp(69px,20vw,120px)}.sign{flex-direction:column}
   footer .f{flex-direction:column}
@@ -578,18 +576,15 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
     </div>
 
     <div class="history-grid reveal" aria-label="Fusi Reise Erinnerungen">
-      <button class="history-card" type="button" data-photo="assets/fusi-history/memory-1.jpg" aria-label="Fusi Reise Erinnerungen: Stadien und Städte">
-        <img loading="lazy" src="assets/fusi-history/memory-1.jpg" alt="Persönliche Fusi Reise Erinnerungen aus verschiedenen Städten und Stadien">
-        <span class="history-label"><small>Unterwegs</small><strong>Stadien & Städte</strong></span>
-      </button>
-      <button class="history-card" type="button" data-photo="assets/fusi-history/memory-2.jpg" aria-label="Fusi Reise Erinnerungen: Abende und Fussball">
-        <img loading="lazy" src="assets/fusi-history/memory-2.jpg" alt="Persönliche Fusi Reise Erinnerungen an Fussball und gemeinsame Abende">
-        <span class="history-label"><small>Dazwischen</small><strong>Abende, die länger wurden</strong></span>
-      </button>
-      <button class="history-card" type="button" data-photo="assets/fusi-history/memory-3.jpg" aria-label="Fusi Reise Erinnerungen: dieselben vier Freunde">
-        <img loading="lazy" src="assets/fusi-history/memory-3.jpg" alt="Persönliche Fusi Reise Erinnerungen der vier Freunde">
-        <span class="history-label"><small>Seit 20+ Jahren</small><strong>Dieselben Jungs</strong></span>
-      </button>
+      <button class="history-card" type="button" data-photo="assets/fusi-history/fusi-01.jpg"><img loading="lazy" src="assets/fusi-history/fusi-01.jpg" alt="Fusi Reise Erinnerung vor historischer Kulisse"><span class="history-mark">Unterwegs</span></button>
+      <button class="history-card" type="button" data-photo="assets/fusi-history/fusi-02.jpg"><img loading="lazy" src="assets/fusi-history/fusi-02.jpg" alt="Fusi Reise Erinnerung vor einem Fussballstadion"><span class="history-mark">Matchday</span></button>
+      <button class="history-card" type="button" data-photo="assets/fusi-history/fusi-03.jpg"><img loading="lazy" src="assets/fusi-history/fusi-03.jpg" alt="Fusi Reise Erinnerung im Stadion"><span class="history-mark">Stadion</span></button>
+      <button class="history-card" type="button" data-photo="assets/fusi-history/fusi-04.jpg"><img loading="lazy" src="assets/fusi-history/fusi-04.jpg" alt="Fusi Reise Erinnerung an einen gemeinsamen Abend"><span class="history-mark">Danach</span></button>
+      <button class="history-card" type="button" data-photo="assets/fusi-history/fusi-05.jpg"><img loading="lazy" src="assets/fusi-history/fusi-05.jpg" alt="Fusi Reise Erinnerung im Fussballstadion bei Nacht"><span class="history-mark">Flutlicht</span></button>
+      <button class="history-card" type="button" data-photo="assets/fusi-history/fusi-06.jpg"><img loading="lazy" src="assets/fusi-history/fusi-06.jpg" alt="Fusi Reise Erinnerung unterwegs"><span class="history-mark">Irgendwo</span></button>
+      <button class="history-card" type="button" data-photo="assets/fusi-history/fusi-07.jpg"><img loading="lazy" src="assets/fusi-history/fusi-07.jpg" alt="Fusi Reise Erinnerung am Abend"><span class="history-mark">Später</span></button>
+      <button class="history-card" type="button" data-photo="assets/fusi-history/fusi-08.jpg"><img loading="lazy" src="assets/fusi-history/fusi-08.jpg" alt="Fusi Reise Erinnerung beim Essen"><span class="history-mark">Essen gehört dazu</span></button>
+      <button class="history-card" type="button" data-photo="assets/fusi-history/fusi-09.jpg"><img loading="lazy" src="assets/fusi-history/fusi-09.jpg" alt="Fusi Reise Erinnerung am Tisch"><span class="history-mark">Dieselben Jungs</span></button>
     </div>
 
     <div class="memory-note reveal">
@@ -607,9 +602,9 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
 <section class="final" data-chapter="Fortsetzung folgt">
   <div class="final-media">
     <img loading="lazy" decoding="async" referrerpolicy="no-referrer"
-      src="https://www.hogamagazin.de/storage/2025/06/wasserturm-koeln-botanik-bar-thresen-768x576.jpg"
+      src="assets/fusi-history/fusi-09.jpg"
       data-fallback="FUSI REISE 2026"
-      alt="Bar Botanik in Köln">
+      alt="Persönliche Erinnerung an eine frühere Fusi Reise">
   </div>
   <div class="wrap final-copy reveal">
     <div class="kicker">Fusi Reise · Jahrgang 2026</div>
@@ -622,7 +617,7 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
 
 <footer>
   <div class="wrap f"><div>FUSI REISE 2026 · Inoffizielles digitales Reisemagazin</div><div>Für die Jungs. Nicht für den Algorithmus.</div></div>
-  <div class="wrap sources">Reiseplan aktualisiert mit Dr. Heger und Goldener Engel in Ihringen. Der Fahrerbereich enthält die verifizierten Zieladressen und direkte Navi Links. Die persönliche Fusi Galerie verwendet eigene Reisebilder; übriges Bildmaterial wird von den jeweiligen Quellseiten geladen. Bei blockiertem Hotlinking erscheint ein reduziertes Fusi Reise Motiv. Ihringen/Kaiserstuhl: Philipp Guttmann, Wikimedia Commons, CC BY-SA 4.0.</div>
+  <div class="wrap sources">Reiseplan aktualisiert mit Dr. Heger und Goldener Engel in Ihringen. Der Fahrerbereich enthält die verifizierten Zieladressen und direkte Navi Links. Die persönliche Fusi Galerie und das Schlussbild verwenden eigene Reisebilder; übriges Bildmaterial wird von den jeweiligen Quellseiten geladen. Bei blockiertem Hotlinking erscheint ein reduziertes Fusi Reise Motiv. Ihringen/Kaiserstuhl: Philipp Guttmann, Wikimedia Commons, CC BY-SA 4.0.</div>
 </footer>
 
 <script>
