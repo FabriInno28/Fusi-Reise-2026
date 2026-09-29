@@ -286,8 +286,8 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
     <article class="place rev">
       <div class="photo reveal">
         <img loading="lazy" decoding="async" referrerpolicy="no-referrer"
-          src="https://engel-ihringen.de/wp-content/uploads/2024/12/goldener-engel-ihringen-1900.jpg"
-          data-fallback="GOLDENER ENGEL · IHRINGEN"
+          src="https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1502927.jpg"
+          data-fallback="GOLDENER ENGEL"
           alt="Goldener Engel in Ihringen">
         <div class="stamp">12.15 Uhr reserviert · Ihringen</div>
       </div>
@@ -441,7 +441,7 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
     <article class="place">
       <div class="photo reveal">
         <img loading="lazy" decoding="async" referrerpolicy="no-referrer"
-          src="https://www.romantischer-rhein.de/images/azc22%21hswti-/gerhards-genussgesellschaft.jpg"
+          src="https://static.wixstatic.com/media/dbc070_bdc5e47331fd48b5a34804b2e43dfda8~mv2.jpg/v1/fill/w_1920%2Ch_1011%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/dbc070_bdc5e47331fd48b5a34804b2e43dfda8~mv2.jpg"
           data-fallback="GERHARDS"
           alt="Gerhards Genussgesellschaft im Blumenhof">
         <div class="stamp">Blumenhof · Deutsches Eck</div>
@@ -581,7 +581,7 @@ footer .f{display:flex;justify-content:space-between;gap:24px}
 
 <footer>
   <div class="wrap f"><div>FUSI REISE 2026 · Inoffizielles digitales Reisemagazin</div><div>Für die Jungs. Nicht für den Algorithmus.</div></div>
-  <div class="wrap sources">Reiseplan aktualisiert mit Dr. Heger und Goldener Engel in Ihringen. Der Fahrerbereich enthält die verifizierten Zieladressen und direkte Navi Links. Bildmaterial wird von den jeweiligen Quellseiten geladen; bei blockiertem Hotlinking erscheint ein Fusi-Reise-Motiv. Ihringen/Kaiserstuhl: Philipp Guttmann, Wikimedia Commons, CC BY-SA 4.0.</div>
+  <div class="wrap sources">Reiseplan aktualisiert mit Dr. Heger und Goldener Engel in Ihringen. Der Fahrerbereich enthält die verifizierten Zieladressen und direkte Navi Links. Bildmaterial wird von den jeweiligen Quellseiten geladen; bei blockiertem Hotlinking erscheint ein reduziertes Fusi-Reise-Motiv. Restaurantbilder: Goldener Engel via Guide MICHELIN / Tablet Hotels; Gerhards via offizielle Website. Ihringen/Kaiserstuhl: Philipp Guttmann, Wikimedia Commons, CC BY-SA 4.0.</div>
 </footer>
 
 <script>
@@ -649,7 +649,7 @@ function fallbackImage(img){
   '<radialGradient id="r"><stop stop-color="#ffffff" stop-opacity=".16"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient></defs>'+
   '<rect width="1600" height="1000" fill="url(#g)"/><circle cx="330" cy="200" r="440" fill="url(#r)"/>'+
   '<path d="M0 760 C300 620 470 820 760 690 C1050 560 1240 650 1600 480 L1600 1000 L0 1000Z" fill="#090909" fill-opacity=".42"/>'+
-  '<text x="80" y="860" fill="#f5ede3" font-family="Georgia,serif" font-size="96" letter-spacing="-3">'+label+'</text>'+
+  '<text x="80" y="860" fill="#f5ede3" font-family="Georgia,serif" font-size="'+(label.length>18?64:label.length>12?78:96)+'" letter-spacing="-2">'+label+'</text>'+
   '<text x="86" y="925" fill="#d3b274" font-family="Arial,sans-serif" font-size="24" letter-spacing="8">FUSI REISE · JAHRGANG 2026</text></svg>';
   img.onerror=null;
   img.src='data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg);
